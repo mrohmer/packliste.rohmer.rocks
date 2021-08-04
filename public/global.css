@@ -1,0 +1,13 @@
+* {
+	position: relative;
+	box-sizing: border-box;
+}
+
+html, body {
+	margin: 0;
+	padding: 0;
+	min-height: 100%;
+}
+html {
+	height: 100%;
+}

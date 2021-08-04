@@ -1,0 +1,11 @@
+label: Für die Fahrt
+key: for-the-ride
+items:
+  - label: Trinken
+    key: trinken
+  - label: Essen
+    key: essen
+  - label: Naschen
+    key: naschen
+  - label: Bootsunterlagen ! (f. Grenze)
+    key: bootsunterlagen

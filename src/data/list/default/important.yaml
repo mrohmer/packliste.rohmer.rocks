@@ -1,0 +1,15 @@
+label: Wichtig
+key: important
+items:
+  - label: Reiseunterlagen
+    key: reiseunterlagen
+  - label: Geld
+    key: geld
+  - label: Ausweis (gültig?)
+    key: ausweis
+  - label: Pickerl
+    key: pickerl
+  - label: Handy
+    key: handy
+  - label: Impfnachweis
+    key: impfnachweis

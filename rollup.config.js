@@ -7,6 +7,8 @@ import sveltePreprocess from 'svelte-preprocess';
 import typescript from '@rollup/plugin-typescript';
 import css from 'rollup-plugin-css-only';
 import yaml from '@rollup/plugin-yaml';
+const { generateSW } = require('rollup-plugin-workbox');
+
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -77,7 +79,12 @@ export default {
 
 		// If we're building for production (npm run build
 		// instead of npm run dev), minify
-		production && terser()
+		production && terser(),
+		production && generateSW({
+			swDest: 'public/build/sw.js',
+			globDirectory: 'public/build/',
+
+		}),
 	],
 	watch: {
 		clearScreen: false

@@ -22,6 +22,17 @@
     <meta name="description" content="Digitale Packliste.">
     <meta name="robots" content="noindex nofollow" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#4F29F0" />
+    <link rel="manifest" href="manifest.json" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Packliste" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+    <script>
+      if ('navigator' in window) {
+        navigator.serviceWorker.register("/pwabuilder-sw.js");
+      }
+    </script>
 </svelte:head>
 
 <main class="container">

@@ -82,8 +82,7 @@ export default {
 		production && terser(),
 		production && generateSW({
 			swDest: 'public/sw.js',
-			globDirectory: 'public/build/',
-
+			globDirectory: 'public/',
 		}),
 	],
 	watch: {

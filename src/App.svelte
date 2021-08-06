@@ -4,6 +4,7 @@
   import type {IList} from './model/list';
   import {defaultList} from './data/list';
   import BottomSheet from "./components/data/BottomSheet.svelte";
+  import PoweredBy from "./components/PoweredBy.svelte";
 
   const currentlyUsedList = defaultList;
 
@@ -18,5 +19,6 @@
 
 <main class="container">
     <List list="{data}"/>
+    <PoweredBy />
 </main>
 <BottomSheet list="{data}" />

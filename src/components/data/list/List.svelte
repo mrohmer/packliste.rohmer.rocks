@@ -63,33 +63,6 @@
       }),
     );
 
-  const reset = (map: (item: IListItem) => IListItem) => {
-    const tmp = $list.groups.map(group => ({
-      ...group,
-      items: group.items.map(item => map(item)),
-    }));
-
-    list.set({
-      ...($list as IList),
-      groups: [...tmp],
-    });
-  }
-  const onResetStateClick = () => reset(
-    item => ({
-      ...item,
-      state: false,
-    })
-  )
-  const onResetAllClick = () => reset(
-    item => ({
-      ...item,
-      state: false,
-      irrelevant: false,
-    })
-  )
-
-  $: hasStateChange = $list.groups.some(group => group.items.some(item => item.state));
-  $: hasIrrelevantChange = $list.groups.some(group => group.items.some(item => item.irrelevant));
   $: irrelevantGroups = $list.groups.filter(group => group.items.some(item => item.irrelevant));
 
 </script>
@@ -103,9 +76,6 @@
 
     &__main {
         flex: 1;
-    }
-    &__bottom {
-      text-align: center;
     }
   }
 
@@ -170,14 +140,5 @@
                 </ExpansionPanelGroup>
             </div>
         {/if}
-    </div>
-
-    <div class="body__bottom">
-        <Button disabled="{!hasStateChange}" on:click={onResetStateClick}>
-            Auswahl zurücksetzen
-        </Button>
-        <Button disabled="{!hasStateChange && !hasIrrelevantChange}" on:click={onResetAllClick}>
-            Alles zurücksetzen
-        </Button>
     </div>
 </div>

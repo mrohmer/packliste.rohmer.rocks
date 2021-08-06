@@ -14,7 +14,7 @@
       padding: 10px 15px;
       transition: 0.2s background ease;
       cursor: pointer;
-      margin: 10px;
+      margin: 0 10px 10px 0;
 
       &:hover {
         background: rgb(0, 0, 0, 0.05);

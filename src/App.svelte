@@ -30,7 +30,7 @@
 
     <script>
       if ('navigator' in window) {
-        navigator.serviceWorker.register("/build/sw.js");
+        navigator.serviceWorker.register("/sw.js");
       }
     </script>
 </svelte:head>

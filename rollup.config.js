@@ -81,7 +81,7 @@ export default {
 		// instead of npm run dev), minify
 		production && terser(),
 		production && generateSW({
-			swDest: 'public/build/sw.js',
+			swDest: 'public/sw.js',
 			globDirectory: 'public/build/',
 
 		}),

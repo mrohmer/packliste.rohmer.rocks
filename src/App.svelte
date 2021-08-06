@@ -17,6 +17,13 @@
     }
 </style>
 
+<svelte:head>
+    <title>Packliste</title>
+    <meta name="description" content="Digitale Packliste.">
+    <meta name="robots" content="noindex nofollow" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</svelte:head>
+
 <main class="container">
     <List list="{data}"/>
     <PoweredBy />

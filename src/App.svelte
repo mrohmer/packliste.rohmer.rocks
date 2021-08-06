@@ -30,7 +30,7 @@
 
     <script>
       if ('navigator' in window) {
-        navigator.serviceWorker.register("/pwabuilder-sw.js");
+        navigator.serviceWorker.register("/build/sw.js");
       }
     </script>
 </svelte:head>

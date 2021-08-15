@@ -1,0 +1,17 @@
+label: Sonstiges (vor Abreise)
+key: diverse-before-departure
+items:
+  - label: Pickerl besorgen
+    key: pickerl-besorgen
+  - label: Videomaut Pirnautobahn
+    key: videomaut-pirnautobahn
+  - label: Anrufbeantworter neu besprechen
+    key: anrufbeantworter-neu-besprechen
+  - label: Geld auf Privatkonto
+    key: geld-aufs-privatkonto
+  - label: Kompressor aus
+    key: kompressor-aus
+  - label: Zahlungen tätigen
+    key: zahlungen-taetigen
+  - label: Heizungseinstellungen anpassen
+    key: heizungseinstellungen-anpassen

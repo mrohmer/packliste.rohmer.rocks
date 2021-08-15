@@ -1,0 +1,33 @@
+label: Sonstiges
+key: diverse
+items:
+  - label: Bücher
+    key: buecher
+  - label: Rätselheft
+    key: raetselhelft
+  - label: Kühlbox
+    key: kuehlbox
+  - label: Fotoapparat
+    key: fotoapparat
+  - label: Diverse ladegeräte
+    key: div-ladegeraete
+  - label: Laptop
+    key: laptop
+  - label: Wörterbuch
+    key: woerterbuch
+  - label: Fernglas
+    key: fernglas
+  - label: Taschenlampe
+    key: taschenlampe
+  - label:  Feuerzeug (voll?)
+    key: feuerzeug
+  - label: Taschenmesser
+    key: taschenmesser
+  - label: Thermometer
+    key: thermometer
+  - label: Gymnastikbender
+    key: gymnastikbender
+  - label: Soundbox
+    key: soundbox
+  - label: Anit-Bite
+    key: anti-bite

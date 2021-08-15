@@ -1,0 +1,17 @@
+label: Boot  (vor Abreise)
+key: boat-before-departure
+items:
+  - label: Batterien aufladen
+    key: batterien-aufladen
+  - label: Motor testen
+    key: motor-testen
+  - label: Öl überprüfen
+    key: oel-ueberpruefen
+  - label: Anoden reinigen / erneuern
+    key: anoden-reinigen
+  - label: Zündschlüssel an Board
+    key: zuendschluessel-an-board
+  - label: Schanierwindschutzscheibe überprüfen
+    key: schanierwinschutzscheibe-ueberpruefen
+  - label: Rumpfschäden ausbessern
+    key: rumpfschaeden-ausbessern

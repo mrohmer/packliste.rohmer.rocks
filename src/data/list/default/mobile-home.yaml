@@ -1,0 +1,109 @@
+label: Mobilheim
+key: mobile-home
+items:
+  - label: Bettwäsche
+    key: bettwaesche
+  - label: Bettlaken
+    key: bettlaken
+  - label: Toilettenpapier
+    key: toilettenpapier
+  - label: Matte fürs Bad
+    key: matte-fuers-bad
+  - label: Haartrockner
+    key: haartrockner
+  - label: Handtuch Haus
+    key: handtuch-haus
+  - label: Handtuch Strand
+    key: handtuch-strand
+  - label: Handtuch Boot
+    key: handtuch-boot
+  - label: Spülmittel
+    key: spuelmittel
+  - label: Spüllappen
+    key: spuellappen
+  - label: Geschirrtücher
+    key: geschirrtuecher
+  - label: Küchenrollen
+    key: kuechenrollen
+  - label: Topflappen
+    key: topflappen
+  - label: Schneidebrettchen
+    key: schneidebrettchen
+  - label: Zwiebelmesser
+    key: zwiebelmesser
+  - label: Kaffeemaschine
+    key: kaffeemaschine
+  - label: Kaffeefilter
+    key: kaffeefilter
+  - label: Wasserfilter
+    key: wasserfilter
+  - label: Toaster
+    key: toaster
+  - label: E-Grill/-Pfanne
+    key: e-grill
+  - label: Grillzange
+    key: grillzange
+  - label: Verlängerungskabel
+    key: verlaengerungskabel
+  - label: Tischdecke
+    key: tischdecke
+  - label: Stuhlauflagen
+    key: stuhlauflagen
+  - label: Plastikbecher
+    key: plastikbecher
+  - label: Biergläser
+    key: bierglaeser
+  - label: Weingläser
+    key: weinglaeser
+  - label: Kerzen
+    key: kerzen
+  - label: Fleecedecke
+    key: fleecedecke
+  - label: Kissen
+    key: kissen
+  - label: Glasrein
+    key: glasrein
+  - label: Mittlerer Topf
+    key: mittlerer-topf
+  - label: Wäscheklammern
+    key: waescheklammern
+  - label: Kleiderbügel
+    key: kleiderbuegel
+  - label: Reisewecke mit Temperatur
+    key: reisewecker-mit-temp
+  - label: Holzlöffel
+    key: holzloeffel
+  - label: Salatbesteck
+    key: salatbesteck
+  - label: Kleiderhaken für Wand
+    key: kleiderhaken-fuer-wand
+  - label: Mehrfachsteckdose
+    key: mehrfachsteckdose
+  - label: Bodenwischer mit Einwegtüchern
+    key: bodenwischer-mit-tuechern
+  - label: Pfanne & Deckel
+    key: pfanne
+  - label: Badreiniger
+    key: badreiniger
+  - label: Pavillion Seitenteil
+    key: pavillion-seitenteil
+  - label: Spannseile (Pavillon)
+    key: spannseile
+  - label: Terassenberleuchtung
+    key: terassenbeleuchtung
+  - label: Saugnapfseifenschale
+    key: saugnapfseifenschale
+  - label: Thermoskanne
+    key: thermoskanne
+  - label: Müllbeutel
+    key: muellbeutel
+  - label: Alufolie
+    key: alufolie
+  - label: Frischhaltefolie
+    key: frischhaltefolie
+  - label: Käsebox
+    key: kaesebox
+  - label: Brotbox
+    key: brotbox
+  - label: Eiswürfelbeutel
+    key: eiswuerfelbeutel

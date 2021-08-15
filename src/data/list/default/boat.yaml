@@ -1,0 +1,49 @@
+label: Boot
+key: boat
+items:
+  - label: Internationaler Bootsführerschein (gültig?)
+    key: international-license
+  - label: Bootsversicherungschein (gültig?)
+    key: bootsversicherungsschein
+  - label: Zulassungsschein HK
+    key: zulassungsschein-hk
+  - label: Großer Anker
+    key: grosser-anker
+  - label: Leine für großen Anker
+    key: leine-fuer-grossen-anker
+  - label: Ketten
+    key: ketten
+  - label: Schäkel
+    key: schaekel
+  - label: Ankerboje
+    key: ankerboje
+  - label: Fender
+    key: fender
+  - label: Diverse Leinen
+    key: div-leinen
+  - label: Fischfinder
+    key: fischfinder
+  - label: Radio
+    key: radio
+  - label: Benzinkanister
+    key: benzinkanister
+  - label: Rettungswesten
+    key: rettungswesten
+  - label: Wasserkanister
+    key: wasserkanister
+  - label: Handyhalter
+    key: handyhalter
+  - label: Navihalter
+    key: navihalter
+  - label: Fun-Tube
+    key: fun-tube
+  - label: Aufblakompressor
+    key: aufblaskompressor
+  - label: Wasserschlauch
+    key: wasserschlauch
+  - label: Wasserschlauchflachtrommel
+    key: wasserschlauchflachtrommel
+  - label: Schwimmflossen
+    key: schwimmflossen
+  - label: Schnorchel
+    key: schnorchel

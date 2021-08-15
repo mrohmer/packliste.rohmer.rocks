@@ -1,0 +1,53 @@
+label: Kulturbeutel
+key: sponge-bag
+items:
+  - label: Seife
+    key: seife
+  - label: Shampoo
+    key: shampoo
+  - label: Zahnpasta
+    key: zahnpaste
+  - label: Zahnbürste
+    key: zahnbuerste
+  - label: Zahnseide
+    key: zahnseide
+  - label: Zahnstocher
+    key: zahnstocher
+  - label: Deo
+    key: deo
+  - label: Parfum
+    key: parfum
+  - label: Sonnencreme
+    key: sonnencreme
+  - label: Rasiersachen
+    key: rasiersachen
+  - label: Wundpflaster
+    key: wundpflaster
+  - label: Wundspray
+    key: wundspray
+  - label: Diverse Medikamente
+    key: diverse-medikamente
+  - label: Waschmittel
+    key: waschmittel
+  - label: Taschentücher
+    key: taschentuecher
+  - label: Nähsachen
+    key: naehsachen
+  - label: Puder
+    key: puder
+  - label: Maniküreset
+    key: manikuereset
+  - label: Ohrstöpsel
+    key: ohrstoepsel
+  - label: Haarwasser
+    key: haarwasser
+  - label: Wattestäbchen
+    key: wattestaebchen
+  - label: Brille
+    key: brille
+  - label: Kontaktlinsen
+    key: kontaktlinsen
+  - label: Langhaarschneider
+    key: langhaarschneider
+  - label: Haargummi
+    key: haargummi

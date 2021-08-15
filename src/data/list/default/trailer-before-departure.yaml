@@ -1,0 +1,11 @@
+label: Trailer  (vor Abreise)
+key: trailer-before-departure
+items:
+  - label: TÜV gültig
+    key: tuev-gueltig
+  - label: Luftdruck überprüfen
+    key: luchtdruck-ueberpruefen
+  - label: Lichtleiste überprüfen
+    key: lcihtleiste-ueberpruefen
+  - label: Bremsen überprüfen
+    key: bremsen-ueberpruefen

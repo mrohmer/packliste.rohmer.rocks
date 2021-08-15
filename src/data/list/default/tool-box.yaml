@@ -1,0 +1,71 @@
+label: Werkzeugbox
+key: tool-box
+items:
+  - label: Sekundenkleber
+    key: sekundenkleber
+  - label: Klebeband
+    key: klebeband
+  - label: Hammer
+    key: hammer
+  - label: Diverse Nägel
+    key: div-naegel
+  - label: Voltmeter
+    key: voltmeter
+  - label: Petroleum
+    key: petroleum
+  - label: Mehrzweckplane
+    key: mehrzweckplane
+  - label: WD40
+    key: wd40
+  - label: Seewasserfett
+    key: seewasserfett
+  - label: Ladegerät (Bootsbetterie)
+    key: ladegeraet-boot
+  - label: Starthilfebox
+    key: starthilfebox
+  - label: Handwaschpaste
+    key: handwaschpaste
+  - label: Poliermittel
+    key: poliermittel
+  - label: 32 Ringschüssel
+    key: 32-ringschluessel
+  - label: Wagenheber
+    key: wagenheber
+  - label: Drehmomentschlüssel
+    key: drehmomentschluessel
+  - label: Ratschenkasten
+    key: ratschenkasten
+  - label: Diverse Schüre
+    key: deiv-schnuere
+  - label: Diverse Leinen
+    key: div-leinen
+  - label: Diverse Kabelbinder
+    key: div-kabelbinder
+  - label: Stoffputzlappen
+    key: stoffputzlappen
+  - label: Elektrokabel
+    key: elektrokabel
+  - label: Dicht- & Klebemittel
+    key: dicht-n-klebemittel
+  - label: Gabelschüsselsatz
+    key: gabelschluesselsatz
+  - label: Spitzzange
+    key: spitzzange
+  - label: Seitenschneider
+    key: seitenscheider
+  - label: Einweghandschuhe
+    key: einweghandschuhe
+  - label: Planenclips
+    key: planenclips
+  - label: Gelcoat-Spachtel
+    key: gelcoat-spachtel
+  - label: Stahlbürste
+    key: stahlbuerste
+  - label: Cuttermesser
+    key: cuttermesser
+  - label: Pinsel
+    key: pinsel
+  - label: Flachschlauchtrommel
+    key: flachschlauchtrommel
+  - label: Spülohren
+    key: spuelohren

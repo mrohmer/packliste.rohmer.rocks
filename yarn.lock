@@ -887,6 +887,11 @@
   resolved "https://registry.npmjs.org/@polka/url/-/url-1.0.0-next.15.tgz#6a9d143f7f4f49db2d782f9e1c8839a29b43ae23"
   integrity sha512-15spi3V28QdevleWBNXE4pIls3nFZmBbUGrW9IVPwiQczuSb9n76TCB4bsk8TSel+I1OkHEdPhu5QKMfY6rQHA==
 
+"@rohmer/svelte-base@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.npmjs.org/@rohmer/svelte-base/-/svelte-base-1.0.0.tgz#5b072cc2147e9aadc16da12774d61d63fe673fb0"
+  integrity sha512-fFS22kNTiB2d337X8CVqYBF0QTVkUM6ftBDMWU8f/oBUwl+IKUOJf8erIJMOLPoCl/fISGJ4hIT/6oJh04X8IA==
+
 "@rollup/plugin-babel@^5.2.0":
   version "5.3.0"
   resolved "https://registry.npmjs.org/@rollup/plugin-babel/-/plugin-babel-5.3.0.tgz#9cb1c5146ddd6a4968ad96f209c50c62f92f9879"

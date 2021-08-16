@@ -29,6 +29,7 @@
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.15.3",
+    "@rohmer/svelte-base": "^1.0.0",
     "hammerjs": "^2.0.8",
     "rollup-plugin-workbox": "^6.1.4",
     "sirv-cli": "^1.0.0"

@@ -4,9 +4,13 @@
   import type {IList} from './model/list';
   import {defaultList} from './data/list';
   import BottomSheet from "./components/data/BottomSheet.svelte";
-  import PoweredBy from "./components/PoweredBy.svelte";
+  import {PoweredBy} from "@rohmer/svelte-base";
 
   const currentlyUsedList = defaultList;
+  const name = 'Matthias Rohmer';
+  const url = 'https://matthias.rohmer.rocks';
+  const technologies = ['svelte', 'netlify'];
+  const sourceCodeUrl = 'https://github.com/mrohmer/packing.rohmer.rocks';
 
   const data = writable<IList>(`list.${currentlyUsedList.key}`, defaultList);
 </script>
@@ -37,6 +41,6 @@
 
 <main class="container">
     <List list="{data}"/>
-    <PoweredBy />
+    <PoweredBy {name} {url} {technologies} {sourceCodeUrl} />
 </main>
 <BottomSheet list="{data}" />

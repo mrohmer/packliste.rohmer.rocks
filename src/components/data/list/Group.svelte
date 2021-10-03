@@ -61,7 +61,7 @@
                     <SwipeAction on:right={() => dispatcher('right', {groupKey: group.key, itemKey: item.key})}>
                         <Checkbox class="checkbox" checked="{item.state}"
                                   on:change={e => dispatcher('change', {checked: e.target.checked, groupKey: group.key, itemKey: item.key})}>
-                            {item.label} {item.key}
+                            {item.label}
                         </Checkbox>
                         <slot slot="right" name="right"/>
                     </SwipeAction>

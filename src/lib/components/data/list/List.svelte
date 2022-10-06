@@ -75,7 +75,7 @@
     padding: 10px;
 
     &__main {
-        flex: 1;
+      flex: 1;
     }
   }
 
@@ -109,15 +109,19 @@
         <div class="list">
             <ExpansionPanelGroup multipleOpen="{true}">
                 {#each $list.groups as group}
-                    <Group group="{group}"
-                           itemFilter="{item => !item.irrelevant}"
-                           on:right={({detail}) => onChangeIrrelevant(true, detail.groupKey, detail.itemKey)}
-                           on:change={({detail}) => onChange(detail.checked, detail.groupKey, detail.itemKey)}
-                    >
-                        <div slot="right">
-                            <Icon>times</Icon>
+                    {#if group.items.some(item => !item.irrelevant)}
+                        <div transition:slide|local>
+                            <Group group="{group}"
+                                   itemFilter="{item => !item.irrelevant}"
+                                   on:right={({detail}) => onChangeIrrelevant(true, detail.groupKey, detail.itemKey)}
+                                   on:change={({detail}) => onChange(detail.checked, detail.groupKey, detail.itemKey)}
+                            >
+                                <div slot="right">
+                                    <Icon>times</Icon>
+                                </div>
+                            </Group>
                         </div>
-                    </Group>
+                    {/if}
                 {/each}
             </ExpansionPanelGroup>
         </div>
@@ -127,15 +131,17 @@
                 <h3>Irrelevant</h3>
                 <ExpansionPanelGroup multipleOpen="{true}">
                     {#each irrelevantGroups as group}
-                        <Group group="{group}"
-                               itemFilter="{item => item.irrelevant}"
-                               on:right={({detail}) => onChangeIrrelevant(false, detail.groupKey, detail.itemKey)}
-                               on:change={({detail}) => onChange(detail.checked, detail.groupKey, detail.itemKey)}
-                        >
-                            <div slot="right">
-                                <Icon>plus</Icon>
-                            </div>
-                        </Group>
+                        <div transition:slide|local>
+                            <Group group="{group}"
+                                   itemFilter="{item => item.irrelevant}"
+                                   on:right={({detail}) => onChangeIrrelevant(false, detail.groupKey, detail.itemKey)}
+                                   on:change={({detail}) => onChange(detail.checked, detail.groupKey, detail.itemKey)}
+                            >
+                                <div slot="right">
+                                    <Icon>plus</Icon>
+                                </div>
+                            </Group>
+                        </div>
                     {/each}
                 </ExpansionPanelGroup>
             </div>

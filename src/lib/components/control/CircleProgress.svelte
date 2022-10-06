@@ -2,7 +2,7 @@
   export let percentage = 0;
   export let max = 100;
   $: progressPath = (): string => {
-    if (percentage <= 0) {
+    if (!percentage || percentage < 0) {
       return "";
     } else if (percentage >= max) {
       return "M50,5A45 45 0 1 1 49.9999 5";

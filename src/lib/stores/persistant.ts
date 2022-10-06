@@ -1,4 +1,5 @@
-import {writable as ogWritable, get as ogGet, Readable, Writable} from 'svelte/store';
+import {writable as ogWritable, get as ogGet} from 'svelte/store';
+import type {Readable, Writable} from 'svelte/store';
 import {run_all, noop, is_function} from 'svelte/internal';
 
 /** Callback to inform of a value updates. */

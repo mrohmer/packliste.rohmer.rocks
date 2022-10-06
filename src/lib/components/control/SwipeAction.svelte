@@ -1,6 +1,5 @@
 <script lang="ts">
   import {createEventDispatcher} from 'svelte';
-  import Hammer from 'hammerjs';
 
   export let leftDisabled = false;
   export let rightDisabled = false;
@@ -9,7 +8,7 @@
   let transform = 0;
   let panning = false;
 
-  const swipe = (node: HTMLElement) => {
+  const swipe = async (node: HTMLElement) => {
     if (typeof window === 'undefined') {
       return;
     }
@@ -19,6 +18,8 @@
       'panstart',
       'panend',
     ];
+
+    const {default: Hammer} = await import('hammerjs');
 
     const hammer = new Hammer(node);
     for (const event of events) {

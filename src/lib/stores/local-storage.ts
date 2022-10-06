@@ -1,6 +1,6 @@
 import {generator} from './persistant';
 
-const storage: Storage = typeof window !== 'undefined' ? window.localStorage : undefined;
+const storage: Storage = typeof window !== 'undefined' ? window.localStorage : undefined!;
 
 const g = generator(storage);
 

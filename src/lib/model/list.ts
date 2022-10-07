@@ -10,7 +10,4 @@ export interface IListGroup extends IBase {
   items: IListItem[];
 }
 
-export interface IListItem extends IBase {
-  state?: boolean;
-  irrelevant?: boolean
-}
+export type IListItem = IBase;

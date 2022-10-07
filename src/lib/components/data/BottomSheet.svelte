@@ -1,48 +1,60 @@
 <script lang="ts">
   import {slide} from 'svelte/transition';
-  import {writable} from 'svelte/store';
-  import type {Writable} from 'svelte/store';
-  import type {IList, IListItem} from '../../model/list';
+  import type {IList} from '../../model/list';
   import CircleProgress from "../control/CircleProgress.svelte";
   import Icon from "../control/Icon.svelte";
   import Button from "../control/Button.svelte";
+  import {db} from '../../db';
+  import {onMount} from 'svelte';
+  import type {Observable} from 'dexie';
+  import {liveQuery} from 'dexie';
 
-  export let list: Writable<IList> = writable({});
+  export let list: IList;
 
   let menuOpen = false;
 
+  const onResetStateClick = () =>
+    db.items.where({listKey: list.key}).modify({state: false});
+  const onResetAllClick = () =>
+    db.items.where({listKey: list.key}).modify({state: false, irrelevant: false});
 
-  const reset = (map: (item: IListItem) => IListItem) => {
-    const tmp = $list.groups.map(group => ({
-      ...group,
-      items: group.items.map(item => map(item)),
-    }));
+  let done: Observable<number>;
+  let irrelevant: Observable<number>;
+  let total: Observable<number>;
+  let anyItemsChanged: Observable<boolean>;
 
-    list.set({
-      ...($list as IList),
-      groups: [...tmp],
-    });
-  }
-  const onResetStateClick = () => reset(
-    item => ({
-      ...item,
-      state: false,
-    })
-  )
-  const onResetAllClick = () => reset(
-    item => ({
-      ...item,
-      state: false,
-      irrelevant: false,
-    })
-  )
+  let mounted = false;
+  onMount(() => (mounted = true));
 
-  $: items = $list.groups.reduce((prev, curr) => [...prev, ...curr.items], []);
-  $: relevantItems = items.filter(item => !item.irrelevant);
-  $: doneItems = relevantItems.filter(item => item.state);
+  $: {
+    if (mounted && list) {
+      done = liveQuery(() =>
+        db.items.where({listKey: list.key})
+          .filter(({state, irrelevant}) => state && !irrelevant)
+          .count()
+      );
+      total = liveQuery(async () => {
+        const irrelevantItems = await db.items
+          .where({listKey: list.key})
+          .filter(({irrelevant}) => irrelevant)
+          .toArray();
+        const items = list?.groups?.reduce((prev, curr) => [...prev, ...curr.items], []) ?? [];
 
-  $: hasStateChange = $list.groups.some(group => group.items.some(item => item.state));
-  $: hasIrrelevantChange = $list.groups.some(group => group.items.some(item => item.irrelevant));
+        const relevantItems = items.filter(({key}) => !irrelevantItems.some(({itemKey}) => itemKey === key));
+
+        return relevantItems.length;
+      });
+      irrelevant = liveQuery(() => db.items.where({listKey: list.key}).filter(({irrelevant}) => irrelevant).count());
+      anyItemsChanged = liveQuery(async () => {
+          const count = await db.items
+            .where({listKey: list.key})
+            .and(({state, irrelevant}) => state || irrelevant)
+            .count();
+          return count > 0;
+        }
+      );
+    }
+    }
 </script>
 
 <style lang="scss">
@@ -121,14 +133,14 @@
   }
 </style>
 
-{#if hasStateChange}
+{#if $anyItemsChanged}
     <div class="bottom-sheet" transition:slide|local>
         <div class="container bottom-sheet__container">
             <div class="bottom-sheet__percentage">
-                <CircleProgress percentage="{(doneItems.length / relevantItems.length) * 100}"/>
+                <CircleProgress percentage="{(($done ?? 0) / ($total ?? 0)) * 100}"/>
             </div>
             <div class="bottom-sheet__progress">
-                {doneItems.length} / {relevantItems.length}
+                {$done ?? 0} / {($total ?? 0)}
                 <br>
                 erledigt
             </div>
@@ -145,12 +157,12 @@
         {#if menuOpen}
             <div class="container bottom-sheet__menu" transition:slide|local>
                 <div class="button">
-                    <Button disabled="{!hasStateChange}" on:click={onResetStateClick}>
+                    <Button disabled="{!$done}" on:click={onResetStateClick}>
                         Auswahl zurücksetzen
                     </Button>
                 </div>
                 <div class="button">
-                    <Button disabled="{!hasStateChange && !hasIrrelevantChange}" on:click={onResetAllClick}>
+                    <Button disabled="{!$done && !$irrelevant}" on:click={onResetAllClick}>
                         Alles zurücksetzen
                     </Button>
                 </div>

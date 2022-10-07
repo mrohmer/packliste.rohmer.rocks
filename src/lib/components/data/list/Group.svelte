@@ -61,10 +61,12 @@
         {#each items as item}
             <div class="item" transition:slide|local>
                 <SwipeAction on:right={() => dispatcher('right', {itemKey: item.key})}>
-                    <Checkbox class="checkbox" checked="{item.state}"
-                              on:change={e => dispatcher('change', {checked: e.target.checked, itemKey: item.key})}>
-                        {item.label} {item.key}
-                    </Checkbox>
+                    {#key item.key}
+                        <Checkbox class="checkbox" checked="{item.state}"
+                                  on:change={e => dispatcher('change', {checked: e.target.checked, itemKey: item.key})}>
+                            {item.label} {item.key}
+                        </Checkbox>
+                    {/key}
                     <slot slot="right" name="right"/>
                 </SwipeAction>
             </div>

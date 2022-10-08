@@ -1,9 +1,13 @@
 <script lang="ts">
   import {createEventDispatcher} from 'svelte';
+  import SwipeActionIndicator from "$lib/components/control/swipe/SwipeActionIndicator.svelte";
+  import type {Color} from './SwipeActionIndicator.svelte';
 
   export let leftDisabled = false;
   export let rightDisabled = false;
   export let threshold = 75;
+  export let rightColor: Color = 'gray';
+  export let leftColor: Color = 'gray';
 
   let transform = 0;
   let panning = false;
@@ -79,44 +83,7 @@
 
 </script>
 
-<style type="text/scss">
-  .swipe {
-    $this: &;
-    $animationLength: 0.2s;
-    $animationFunction: ease;
-    position: relative;
-    overflow: hidden;
-
-    &--animated &__default {
-      transition: $animationLength margin-left $animationFunction;
-    }
-    &__action {
-      $width: 100px;
-      $borderRadius: 3px;
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      width: $width;
-      background: #dddddd;
-      text-align: center;
-
-      #{$this}--animated & {
-        transition: $animationLength left $animationFunction;
-      }
-      &--left {
-        border-top-right-radius: $borderRadius;
-        border-bottom-right-radius: $borderRadius;
-      }
-      &--right {
-        border-top-left-radius: $borderRadius;
-        border-bottom-left-radius: $borderRadius;
-      }
-    }
-
-  }
-</style>
-
-<div class="swipe" class:swipe--animated={!panning}
+<div class="overflow-hidden"
      use:swipe
      on:panleft={onPanRight}
      on:panright={onPanLeft}
@@ -124,17 +91,19 @@
      on:panend={onPanEnd}
      on:click={preventClick}
 >
-    <div class="swipe__default" style="margin-left: {transform}px">
+    <div class:transition-all={!panning} style="margin-left: {transform}px">
         <slot/>
     </div>
     {#if hasLeft}
-        <div class="swipe__action swipe__action--left" style="width: {threshold}px; left: -{threshold - transform}px;">
+        <SwipeActionIndicator side="left" {threshold} {transform} {panning} color={leftColor}
+        >
             <slot name="left"/>
-        </div>
+        </SwipeActionIndicator>
     {/if}
     {#if hasRight}
-        <div class="swipe__action swipe__action--right" style="width: {threshold}px; left: calc(100% + {transform}px);">
+        <SwipeActionIndicator side="right" {threshold} {transform} {panning} color={rightColor}
+        >
             <slot name="right"/>
-        </div>
+        </SwipeActionIndicator>
     {/if}
 </div>

@@ -54,115 +54,40 @@
         }
       );
     }
-    }
+  }
 </script>
 
-<style lang="scss">
-  @use "sass:math" as math;
-
-  .bottom-sheet {
-    $height: 50px;
-    $paddingVertical: 5px;
-    padding: $paddingVertical 0 0;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: white;
-    border-top: 1px solid #bbb;
-    box-shadow: 0 0 10px 0 #bbb;
-
-    .container {
-      padding: 0 42px $paddingVertical;
-    }
-
-    &__container {
-      display: flex;
-      flex-direction: row;
-    }
-
-    &__percentage {
-      height: $height - ($paddingVertical * 2);
-      width: $height - ($paddingVertical * 2);
-      margin-right: 10px;
-    }
-
-    &__progress {
-      height: 100%;
-      line-height: math.div($height - $paddingVertical * 2 - 10px, 2);
-      flex: 1;
-      font-size: 14px;
-      padding: 5px 0;
-    }
-
-    &__menu-toggle {
-      line-height: $height - $paddingVertical * 2;
-      color: #999;
-      padding: 0 10px;
-      transition: 0.25s color linear;
-      cursor: pointer;
-
-      &--close {
-        margin-right: -3px;
-      }
-
-      &:hover {
-        color: #333;
-      }
-    }
-
-    &__menu {
-      margin-top: 15px;
-
-      .button {
-        width: calc(49.5% - 5px);
-        margin-right: 5px;
-        display: inline-block;
-        vertical-align: top;
-
-        @media (max-width: 500px) {
-          width: 100%;
-          margin-right: 0;
-        }
-
-        & :global(button) {
-          width: 100%;
-        }
-      }
-    }
-  }
-</style>
-
 {#if $anyItemsChanged}
-    <div class="bottom-sheet" transition:slide|local>
-        <div class="container bottom-sheet__container">
-            <div class="bottom-sheet__percentage">
+    <div class="pt-2 fixed left-0 right-0 bottom-0 bg-white border-t border-neutral-100" transition:slide|local>
+        <div class="px-2.5 pb-1 flex items-center max-w-4xl mx-auto">
+            <div class="h-10 w-10 mr-2.5 text-xs">
                 <CircleProgress percentage="{(($done ?? 0) / ($total ?? 0)) * 100}"/>
             </div>
-            <div class="bottom-sheet__progress">
-                {$done ?? 0} / {($total ?? 0)}
-                <br>
-                erledigt
+            <div class="h-full flex-1 text-sm py-1">
+                <div>
+                    <span class="text-primary font-semibold">{$done ?? 0}</span> Aufgaben erledigt
+                </div>
+                <div class="text-neutral-400">
+                    von insgesamt {($total ?? 0)}
+                </div>
             </div>
-            <div class="bottom-sheet__menu-toggle" on:click={() => menuOpen = !menuOpen}
-                 style="display: {menuOpen ? 'none' : ''}">
+            <div class="text-neutral-300 px-2.5 transition-colors cursor-pointer leading-10 hover:text-neutral-500" class:hidden={menuOpen} on:click={() => menuOpen = !menuOpen}>
                 <Icon>ellipsis-v</Icon>
             </div>
-            <div class="bottom-sheet__menu-toggle bottom-sheet__menu-toggle--close"
-                 on:click={() => menuOpen = !menuOpen}
-                 style="display: {!menuOpen ? 'none' : ''}">
+            <div class="text-neutral-300 px-2.5 transition-colors cursor-pointer hover:text-neutral-500 -mr-1" class:hidden={!menuOpen}
+                 on:click={() => menuOpen = !menuOpen}>
                 <Icon>times</Icon>
             </div>
         </div>
         {#if menuOpen}
-            <div class="container bottom-sheet__menu" transition:slide|local>
-                <div class="button">
-                    <Button disabled="{!$done}" on:click={onResetStateClick}>
+            <div class="px-10 pb-1 mt-4 block md:flex" transition:slide|local>
+                <div class="w-full">
+                    <Button class="w-full" disabled="{!$done}" on:click={onResetStateClick}>
                         Auswahl zurücksetzen
                     </Button>
                 </div>
-                <div class="button">
-                    <Button disabled="{!$done && !$irrelevant}" on:click={onResetAllClick}>
+                <div class="w-full">
+                    <Button class="w-full" disabled="{!$done && !$irrelevant}" on:click={onResetAllClick}>
                         Alles zurücksetzen
                     </Button>
                 </div>

@@ -24,7 +24,7 @@
   }
 </style>
 
-<main class="container">
+<main class="pb-14 max-w-4xl mx-auto px-2.5">
     <List list="{defaultList}"/>
     <PoweredBy {name} {url} {technologies} {sourceCodeUrl} />
 </main>

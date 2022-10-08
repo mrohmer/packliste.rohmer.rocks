@@ -20,55 +20,15 @@
   };
 </script>
 
-<style type="text/scss">
-  @use 'src/styles/variables' as var;
-  svg {
-    fill: var(--progress-fill, transparent);
-    height: 100%;
-    position: absolute;
-    stroke-linecap: var(--progress-linecap, round);
-    width: 100%;
-    left: 0;
-    right: 0;
-  }
 
-  path {
-    &:first-child {
-      stroke: var(--progress-trackcolor, grey);
-      stroke-width: var(--progress-trackwidth, 3px);
-    }
-
-    &:last-child {
-      stroke: var(--progress-color, var.$primary);
-      stroke-width: var(--progress-width, 3px);
-    }
-  }
-
-  div {
-    height: 100%;
-    position: relative;
-    width: 100%;
-  }
-
-  .label {
-    left: 50%;
-    position: absolute;
-    top: 50%;
-    transform: translate(-50%, -50%);
-  }
-  .percent {
-    font-size: 60%;
-    vertical-align: top;
-  }
-</style>
-<div>
-    <svg viewBox="0 0 100 100">
-        <path d="M50,5A45 45 0 1 1 49.9999 5"/>
-        <path d="{progressPath()}"/>
+<div class="h-full w-full">
+    <svg viewBox="0 0 100 100" class="fill-transparent h-full absolute w-full left-0 right-0">
+        <path d="M50,5A45 45 0 1 1 49.9999 5" class="stroke-gray-400 stroke-2"/>
+        <path d="{progressPath()}" class="stroke-primary stroke-2"/>
     </svg>
-    <div>
+    <div class="h-full w-full">
         <slot>
-            <span class="label">{percentage.toFixed(0)}<span class="percent">%</span></span>
+            <span class="absolute left-1/2 top-1/2 -translate-x-2/4 -translate-y-2/4">{percentage.toFixed(0)}<span class="text-slate-400 font-light">%</span></span>
         </slot>
     </div>
 </div>

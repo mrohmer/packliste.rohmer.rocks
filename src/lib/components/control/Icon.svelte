@@ -8,5 +8,5 @@
 
 <i class="fa fa-{icon}"></i>
 
-<span style="display: none" bind:this={slotObj}><slot/></span>
+<span class="hidden" bind:this={slotObj}><slot/></span>
 

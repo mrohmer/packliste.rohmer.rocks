@@ -1,31 +1,18 @@
 <script lang="ts">
   import Icon from "./Icon.svelte";
-    export let disabled=false
-    export let variant: 'button' | 'icon' = 'button'
+
+  let klass: string;
+  export let disabled = false
+  export let variant: 'button' | 'icon' = 'button'
+
+  export {klass as class};
 </script>
 
-<style type="text/scss">
-  @use 'src/styles/variables' as var;
-    button {
-      background: transparent;
-      border: 1px solid var.$primary;
-      color: var.$primary;
-      border-radius: 3px;
-      padding: 10px 15px;
-      transition: 0.2s background ease;
-      cursor: pointer;
-      margin: 0 10px 10px 0;
-
-      &:hover {
-        background: rgb(0, 0, 0, 0.05);
-
-      }
-    }
-</style>
-
-<button on:click {disabled} class:button-icon={variant === 'icon'}>
+<button on:click {disabled} class="bg-transparent border border-primary text-primary rounded px-4 py-2.5 cursor-pointer mr-2.5 mb-2.5 transition-colors hover:bg-gray-100 {klass}">
     {#if variant === 'icon'}
-        <Icon><slot/></Icon>
+        <Icon>
+            <slot/>
+        </Icon>
     {:else}
         <slot/>
     {/if}

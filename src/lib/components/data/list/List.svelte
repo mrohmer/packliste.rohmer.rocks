@@ -87,54 +87,24 @@
 
 </script>
 
-<style type="text/scss">
+<style lang="postcss">
   .body {
-    display: flex;
-    flex-direction: column;
     min-height: calc(100vh - 50px);
-    padding: 10px;
-
-    &__main {
-      flex: 1;
-    }
-  }
-
-  :global(.swipe__action--right) {
-    .list & {
-      background: rgb(180, 10, 10);
-      color: white;
-      line-height: 40px;
-    }
-
-    .list--irrelevant & {
-      background: rgb(10, 180, 10);
-    }
-  }
-
-  .list {
-    &--irrelevant {
-      opacity: 0.5;
-      margin-top: 100px;
-
-      h3 {
-        text-transform: uppercase;
-        text-align: center;
-      }
-    }
   }
 </style>
 
 {#if $groups}
-    <div class="body">
-        <div class="body__main">
+    <div class="body flex flex-col py-2.5">
+        <div class="flex-1">
             {#if $groups.normal.length }
-                <div class="list">
+                <div>
                     <ExpansionPanelGroup multipleOpen="{true}">
                         {#each $groups.normal as group}
                             <div transition:slide|local>
                                 <Group {...group}
                                        on:right={({detail}) => onChangeIrrelevant(true, group.key, detail.itemKey)}
                                        on:change={({detail}) => onChange(detail.checked, group.key, detail.itemKey)}
+                                       swipeActionColor="red"
                                 >
                                     <div slot="right">
                                         <Icon>times</Icon>
@@ -147,14 +117,15 @@
             {/if}
 
             {#if $groups.irrelevant.length }
-                <div class="list list--irrelevant" transition:slide|local>
-                    <h3>Irrelevant</h3>
+                <div class="opacity-50 mt-24" transition:slide|local>
+                    <h3 class="uppercase text-center text-xl">Irrelevant</h3>
                     <ExpansionPanelGroup multipleOpen="{true}">
                         {#each $groups.irrelevant as group}
                             <div transition:slide|local>
                                 <Group {...group}
                                        on:right={({detail}) => onChangeIrrelevant(false, group.key, detail.itemKey)}
                                        on:change={({detail}) => onChange(detail.checked, group.key, detail.itemKey)}
+                                       swipeActionColor="green"
                                 >
                                     <div slot="right">
                                         <Icon>plus</Icon>

@@ -1,70 +1,45 @@
 <script lang="ts">
   import ExpansionPanel from "../../control/ExpansionPanel.svelte";
   import type {IListItem} from '../../../model/list';
-  import SwipeAction from "../../control/SwipeAction.svelte";
+  import SwipeAction from "../../control/swipe/SwipeAction.svelte";
   import Checkbox from "../../control/Checkbox.svelte";
   import {createEventDispatcher} from 'svelte';
   import {slide} from 'svelte/transition';
   import CircleProgress from "../../control/CircleProgress.svelte";
   import type {ItemState} from '../../../model/item-state';
+  import type {Color} from '../../control/swipe/SwipeActionIndicator.svelte';
 
   export let label: string;
   export let items: (IListItem & ItemState)[];
+  export let swipeActionColor: Color = 'gray';
 
   const dispatcher = createEventDispatcher();
 
   $: finishedItems = items?.filter(({state}) => state) ?? [];
 </script>
 
-<style type="text/scss">
-  .header {
-    &__circle, &__label {
-      display: inline-block;
-      vertical-align: middle;
-    }
-
-    &__circle {
-      height: 35px;
-      width: 35px;
-      font-size: 10px;
-      margin-right: 10px;
-    }
-
-    &__label {
-      display: inline-flex;
-      flex-direction: column;
-
-      &__line2 {
-        color: #666666;
-        font-size: 10px;
-        line-height: 7px;
-      }
-    }
-  }
-</style>
-
 {#if label}
     <ExpansionPanel disabled="{!items?.length}">
-        <span slot="header">
-            <span class="header__circle">
+        <div slot="header" class="flex">
+            <div class="h-9 w-9 text-[10px] mr-2.5">
                 <CircleProgress percentage="{(finishedItems.length / items.length) * 100}"/>
-            </span>
-            <span class="header__label">
-                <span class="header__label__line1">
+            </div>
+            <div class="flex-1">
+                <div>
                     {label}
-                </span>
-                <span class="header__label__line2">
+                </div>
+                <div class="text-neutral-500 text-[10px] leading-[7px]">
                     {finishedItems.length} / {items.length}
-                </span>
-            </span>
-        </span>
+                </div>
+            </div>
+        </div>
         {#each items as item}
-            <div class="item" transition:slide|local>
-                <SwipeAction on:right={() => dispatcher('right', {itemKey: item.key})}>
+            <div class="sm:pl-10" transition:slide|local>
+                <SwipeAction on:right={() => dispatcher('right', {itemKey: item.key})} rightColor={swipeActionColor}>
                     {#key item.key}
                         <Checkbox class="checkbox" checked="{item.state}"
                                   on:change={e => dispatcher('change', {checked: e.target.checked, itemKey: item.key})}>
-                            {item.label} {item.key}
+                            {item.label}
                         </Checkbox>
                     {/key}
                     <slot slot="right" name="right"/>

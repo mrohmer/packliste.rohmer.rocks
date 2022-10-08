@@ -49,6 +49,7 @@ export class ProjectDb extends Dexie {
 }
 
 export const db = new ProjectDb();
+export * from './utils';
 
 interface LocalStorageValueBase {
   key: string;

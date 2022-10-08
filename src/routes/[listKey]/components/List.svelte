@@ -1,20 +1,21 @@
 <script lang="ts">
-  import type {IList, IListGroup, IListItem} from '../../../model/list';
-  import ExpansionPanelGroup from "../../control/ExpansionPanelGroup.svelte";
-  import Icon from "../../control/Icon.svelte";
+  import type {IList, IListGroup, IListItem} from '$lib/model/list';
+  import ExpansionPanelGroup from "$lib/components/control/ExpansionPanelGroup.svelte";
+  import Icon from "$lib/components/control/Icon.svelte";
   import Group from "./Group.svelte";
   import {slide} from 'svelte/transition';
-  import {db} from '../../../db';
+  import {db} from '$lib/db';
   import {onMount} from 'svelte';
-  import {liveQuery} from 'dexie';
   import type {Observable} from 'dexie';
-  import type {ItemState} from '../../../model/item-state';
+  import {liveQuery} from 'dexie';
+  import type {ItemState} from '$lib/model/item-state';
 
   type ItemWithState = IListItem & ItemState;
   type GroupWithState = Omit<IListGroup, 'items'> & Record<'items', ItemWithState[]>
+
   export let list: IList;
+
   let groups: Observable<Record<'normal' | 'irrelevant', GroupWithState[]>>;
-  let irrelevantGroups: Observable<(Omit<IListGroup, 'items'> & Record<'items', (IListItem & ItemState)[]>)[]>;
 
   const updateItem = (groupKey: string, itemKey: string, {
     state,
@@ -84,7 +85,6 @@
       });
     }
   }
-
 </script>
 
 <style lang="postcss">

@@ -13,11 +13,9 @@ import boatBeforeDeparture from './boat-before-departure.yaml';
 import diverseBeforeDeparture from './diverse-before-departure.yaml';
 import type {IList} from '../../../model/list';
 
-const version = 1;
-
-export const defaultList: IList = {
-  label: 'default',
-  key: `Packliste.v${version}`,
+export const mobilehomeWithBoatList: IList = {
+  label: 'Mobileheim mit Boot',
+  key: `mobilehome-with-boat`,
   groups: [
     important,
     forTheRide,

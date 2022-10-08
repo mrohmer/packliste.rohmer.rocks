@@ -1,10 +1,10 @@
 <script lang="ts">
   import {slide} from 'svelte/transition';
-  import type {IList} from '../../model/list';
-  import CircleProgress from "../control/CircleProgress.svelte";
-  import Icon from "../control/Icon.svelte";
-  import Button from "../control/Button.svelte";
-  import {db} from '../../db';
+  import type {IList} from '$lib/model/list';
+  import CircleProgress from "$lib/components/control/CircleProgress.svelte";
+  import Icon from "$lib/components/control/Icon.svelte";
+  import Button from "$lib/components/control/Button.svelte";
+  import {db} from '$lib/db';
   import {onMount} from 'svelte';
   import type {Observable} from 'dexie';
   import {liveQuery} from 'dexie';
@@ -58,7 +58,7 @@
 </script>
 
 {#if $anyItemsChanged}
-    <div class="pt-2 fixed left-0 right-0 bottom-0 bg-white border-t border-neutral-100" transition:slide|local>
+    <div class="pt-2 fixed left-0 right-0 bottom-0 bg-white border-t border-neutral-100 z-10" transition:slide|local>
         <div class="px-2.5 pb-1 flex items-center max-w-4xl mx-auto">
             <div class="h-10 w-10 mr-2.5 text-xs">
                 <CircleProgress percentage="{(($done ?? 0) / ($total ?? 0)) * 100}"/>
@@ -80,7 +80,7 @@
             </div>
         </div>
         {#if menuOpen}
-            <div class="px-10 pb-1 mt-4 block md:flex" transition:slide|local>
+            <div class="px-10 pb-1 mt-4 block md:flex md:space-x-2" transition:slide|local>
                 <div class="w-full">
                     <Button class="w-full" disabled="{!$done}" on:click={onResetStateClick}>
                         Auswahl zurücksetzen

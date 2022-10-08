@@ -1,13 +1,13 @@
 <script lang="ts">
-  import ExpansionPanel from "../../control/ExpansionPanel.svelte";
-  import type {IListItem} from '../../../model/list';
-  import SwipeAction from "../../control/swipe/SwipeAction.svelte";
-  import Checkbox from "../../control/Checkbox.svelte";
+  import ExpansionPanel from "$lib/components/control/ExpansionPanel.svelte";
+  import type {IListItem} from '$lib/model/list';
+  import SwipeAction from "$lib/components/control/swipe/SwipeAction.svelte";
+  import Checkbox from "$lib/components/control/Checkbox.svelte";
   import {createEventDispatcher} from 'svelte';
   import {slide} from 'svelte/transition';
-  import CircleProgress from "../../control/CircleProgress.svelte";
-  import type {ItemState} from '../../../model/item-state';
-  import type {Color} from '../../control/swipe/SwipeActionIndicator.svelte';
+  import CircleProgress from "$lib/components/control/CircleProgress.svelte";
+  import type {ItemState} from '$lib/model/item-state';
+  import type {Color} from '$lib/components/control/swipe/SwipeActionIndicator.svelte';
 
   export let label: string;
   export let items: (IListItem & ItemState)[];

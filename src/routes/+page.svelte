@@ -1,11 +1,13 @@
 <script lang="ts">
   import {onMount} from 'svelte';
-  import {lists as listsObj} from "$lib/data/list/index.js";
   import type {Observable} from 'dexie';
   import type {IList} from '$lib/model/list';
   import {liveQuery} from 'dexie';
   import {db} from '$lib/db';
   import ListLink from "./components/ListLink.svelte";
+  import type {PageData} from './$types';
+
+  export let data: PageData;
 
   let mounted = false;
   onMount(() => (mounted = true));
@@ -20,7 +22,7 @@
     return count > 0;
   }
   const getEditedLists = async () => {
-    const promises = Object.keys(listsObj)
+    const promises = data.lists.map(({key}) => key)
       .map(async key => (await isListEdited(key)) ? key : undefined);
 
     const results = await Promise.all(promises);
@@ -29,17 +31,17 @@
   }
 
   $: {
-    if (mounted) {
+    if (mounted && data?.lists) {
       lists = liveQuery(async () => {
         const editedLists = await getEditedLists();
         return {
-          edited: Object.entries(listsObj)
-            .filter(([key]) => editedLists.includes(key))
-            .map(([, value]) => value)
+          edited: data.lists
+            .filter(({key}) => editedLists.includes(key))
+            .map((value) => value)
           ,
-          idle: Object.entries(listsObj)
-            .filter(([key]) => !editedLists.includes(key))
-            .map(([, value]) => value),
+          idle: data.lists
+            .filter(({key}) => !editedLists.includes(key))
+            .map((value) => value),
         }
       })
     }
@@ -57,7 +59,7 @@
         {#if $lists.edited.length}
             <div class="mb-5">
                 {#if $lists.idle.length}
-                    <h2 class="font-bold mb-2">Deine Listen</h2>
+                    <h2 class="mb-2">Deine Listen</h2>
                 {/if}
 
                 {#each $lists.edited as list}
@@ -69,7 +71,7 @@
         {#if $lists.idle.length}
             <div class="mb-5">
                 {#if $lists.edited.length}
-                    <h2 class="font-bold mb-2">Andere Listen</h2>
+                    <h2 class="mb-2">Andere Listen</h2>
                 {/if}
 
                 {#each $lists.idle as list}

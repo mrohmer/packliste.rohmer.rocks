@@ -4,6 +4,7 @@
 	"private": true,
 	"scripts": {
 		"dev": "vite dev",
+		"dev:backend": "PORT=8083 netlify-cms-proxy-server",
 		"build": "vite build",
 		"preview": "vite preview",
 		"test": "playwright test",
@@ -17,6 +18,7 @@
 		"@rohmer/svelte-base": "^1.0.0",
 		"dexie": "^3.2.2",
 		"hammerjs": "^2.0.8",
+		"netlify-cms-quick-fields": "^0.3.0",
 		"rollup-plugin-workbox": "^6.1.4",
 		"sass": "^1.55.0"
 	},
@@ -31,6 +33,7 @@
 		"eslint": "^8.16.0",
 		"eslint-config-prettier": "^8.3.0",
 		"eslint-plugin-svelte3": "^4.0.0",
+		"netlify-cms-proxy-server": "^1.3.24",
 		"postcss": "^8.4.17",
 		"prettier": "^2.6.2",
 		"prettier-plugin-svelte": "^2.7.0",

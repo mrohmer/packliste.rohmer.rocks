@@ -6,8 +6,8 @@ import { env } from '$env/dynamic/private';
 
 const getContentDir = () => {
   const rootDir =
-    env.ROOT_DIR ?? path.resolve(new URL('.', import.meta.url).pathname, '../..');
-  return path.resolve(rootDir, 'content');
+    env.ROOT_DIR ?? path.resolve(new URL('.', import.meta.url).pathname, '../../..');
+  return path.resolve(rootDir, 'src/content');
 };
 const getListsDir = () => `${getContentDir()}/lists`;
 

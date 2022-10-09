@@ -1,4 +1,0 @@
----
-label: asdf
-key: asdf
----

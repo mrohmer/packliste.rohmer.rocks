@@ -2,10 +2,11 @@ import path from 'path';
 import {URL} from 'url';
 import fs from 'fs';
 import type {IList} from '../model/list';
+import { env } from '$env/dynamic/private';
 
 const getContentDir = () => {
   const rootDir =
-    process.env.ROOT_DIR ?? path.resolve(new URL('.', import.meta.url).pathname, '../..');
+    env.ROOT_DIR ?? path.resolve(new URL('.', import.meta.url).pathname, '../..');
   return path.resolve(rootDir, 'content');
 };
 const getListsDir = () => `${getContentDir()}/lists`;

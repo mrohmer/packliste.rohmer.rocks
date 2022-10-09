@@ -37,18 +37,19 @@
         return {
           edited: data.lists
             .filter(({key}) => editedLists.includes(key))
-            .map((value) => value)
           ,
           idle: data.lists
-            .filter(({key}) => !editedLists.includes(key))
-            .map((value) => value),
+            .filter(({key}) => !editedLists.includes(key)),
         }
       })
     }
   }
+
+  $: edited = $lists?.edited ?? [];
+  $: idle = $lists?.idle ?? data?.lists ?? [];
 </script>
 
-{#if $lists}
+{#if data.lists}
     <div class="pt-20 flex justify-center items-center">
         <img class="block invert h-14 w-14" src="/icons/icon_100.png" alt="checkbox"/>
         <div class="pl-5">
@@ -56,25 +57,25 @@
         </div>
     </div>
     <div class="max-w-xl mx-auto mt-20">
-        {#if $lists.edited.length}
+        {#if edited.length}
             <div class="mb-5">
-                {#if $lists.idle.length}
+                {#if idle.length}
                     <h2 class="mb-2">Deine Listen</h2>
                 {/if}
 
-                {#each $lists.edited as list}
+                {#each edited as list}
                     <ListLink {list} edited={true}/>
                 {/each}
             </div>
         {/if}
 
-        {#if $lists.idle.length}
+        {#if idle.length}
             <div class="mb-5">
-                {#if $lists.edited.length}
+                {#if edited.length}
                     <h2 class="mb-2">Andere Listen</h2>
                 {/if}
 
-                {#each $lists.idle as list}
+                {#each idle as list}
                     <ListLink {list}/>
                 {/each}
             </div>

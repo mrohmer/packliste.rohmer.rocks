@@ -2,7 +2,7 @@ import type {PageLoad} from './$types';
 import { error } from '@sveltejs/kit';
 import {readListFile} from '$lib/utils/read-content';
 
-export const prerender = 'auto';
+export const prerender = true;
 
 export const load: PageLoad = ({params}) => {
   const {listKey} = params;

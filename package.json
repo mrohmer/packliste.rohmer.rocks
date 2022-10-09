@@ -23,7 +23,6 @@
 		"sass": "^1.55.0"
 	},
 	"devDependencies": {
-		"@modyfi/vite-plugin-yaml": "^1.0.3",
 		"@playwright/test": "^1.25.0",
 		"@sveltejs/adapter-auto": "next",
 		"@sveltejs/kit": "next",

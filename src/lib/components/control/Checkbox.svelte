@@ -13,10 +13,10 @@
         content: "";
     }
 
-    label::before {
-        @apply h-0.5 w-2 -left-[27px] bg-primary rounded-sm transition-colors duration-300;
+    label span::before {
+        @apply h-0.5 w-2 -left-[27px] bg-primary rounded-sm transition-colors duration-300 top-0 bottom-0 my-auto;
     }
-    label::after {
+    label span::after {
        @apply h-1 w-1 top-2 -left-[25px] rounded-full;
     }
 
@@ -46,12 +46,12 @@
         animation: move .3s ease .1s forwards;
     }
 
-    .checkbox input[type="checkbox"]:checked + label::before {
+    .checkbox input[type="checkbox"]:checked + label span::before {
         @apply bg-[#C3C8DE];
         animation: slice .4s ease forwards;
     }
 
-    .checkbox input[type="checkbox"]:checked + label::after {
+    .checkbox input[type="checkbox"]:checked + label span::after {
         animation: firework .5s ease forwards .1s;
     }
 
@@ -139,9 +139,10 @@
     }
 </style>
 
-<div class="checkbox w-full h-10 rounded-lg p-2.5 grid items-center">
+<div class="checkbox w-full h-10 rounded-lg p-2.5 flex items-center mb-px">
+    <div class="absolute top-0 left-0 right-0 bottom-0 w-full h-full cursor-pointer" on:click={() => checked = !checked}></div>
     <input id="{inputId}" type="checkbox" value="1" {checked} on:change class="h-4 w-4 border-0 mr-4 cursor-pointer grid items-center outline-[none] appearance-none">
-    <label for="{inputId}" class="text-[#414856] cursor-pointer grid items-center w-fit transition-colors duration-300">
-        <slot/>
+    <label for="{inputId}" class="text-[#414856] cursor-pointer items-center transition-colors duration-300 flex-1">
+        <span class="inline-block w-fit pr-1"><slot /></span>
     </label>
 </div>

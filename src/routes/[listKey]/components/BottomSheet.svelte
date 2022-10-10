@@ -65,7 +65,7 @@
             </div>
             <div class="h-full flex-1 text-sm py-1">
                 <div>
-                    <span class="text-primary font-semibold">{$done ?? 0}</span> Aufgaben erledigt
+                    <span class="text-primary font-semibold">{$done ?? 0}</span> Aufgabe{($done ?? 0) !== 1 ? 'n' : ''} erledigt
                 </div>
                 <div class="text-neutral-400">
                     von insgesamt {($total ?? 0)}

@@ -19,5 +19,16 @@
     <div class="content">
         <slot />
     </div>
-    <PoweredBy {name} {url} {technologies} {sourceCodeUrl} />
 </main>
+<footer class="max-w-4xl mx-auto">
+    <div class="flex justify-center space-x-3.5 -mb-10 text-neutral-400 text-sm">
+        <div>
+            <a href="/impressum" class=" transition-colors hover:underline hover:text-neutral-600">Impressum</a>
+        </div>
+        <div>|</div>
+        <div>
+            <a href="/datenschutz" class="transition-colors hover:underline hover:text-neutral-600">Datenschutz</a>
+        </div>
+    </div>
+    <PoweredBy {name} {url} {technologies} {sourceCodeUrl} />
+</footer>

@@ -80,7 +80,7 @@
             </div>
         </div>
         {#if menuOpen}
-            <div class="px-10 pb-1 mt-4 block md:flex md:space-x-2" transition:slide|local>
+            <div class="pl-14 pr-4 pb-1 mt-4 block md:flex md:space-x-2" transition:slide|local>
                 <div class="w-full">
                     <Button class="w-full" disabled="{!$done}" on:click={onResetStateClick}>
                         Auswahl zurücksetzen

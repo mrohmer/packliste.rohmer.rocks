@@ -6,6 +6,7 @@
   import {db} from '$lib/db';
   import ListLink from "./components/ListLink.svelte";
   import type {PageData} from './$types';
+  import Header from "$lib/components/Header.svelte";
 
   export let data: PageData;
 
@@ -50,12 +51,7 @@
 </script>
 
 {#if data.lists}
-    <div class="pt-20 flex justify-center items-center">
-        <img class="block invert h-14 w-14" src="/icons/icon_100.png" alt="checkbox"/>
-        <div class="pl-5">
-            <div class="text-5xl font-extralight">Packliste</div>
-        </div>
-    </div>
+    <Header />
     <div class="max-w-xl mx-auto mt-20">
         {#if edited.length}
             <div class="mb-5">

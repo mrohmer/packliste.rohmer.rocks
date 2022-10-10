@@ -1,6 +1,6 @@
 <script lang="ts">
   export let checked = false;
-  export let inputId = `checkbox-${(Math.random() * 1000).toFixed(0)}`
+  export let inputId = `checkbox-${(Math.random() * 1000).toFixed(0)}`;
 </script>
 
 <style lang="postcss">

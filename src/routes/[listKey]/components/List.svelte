@@ -87,14 +87,8 @@
   }
 </script>
 
-<style lang="postcss">
-  .body {
-    min-height: calc(100vh - 50px);
-  }
-</style>
-
 {#if $groups}
-    <div class="body flex flex-col py-2.5">
+    <div class="flex flex-col py-2.5">
         <div class="flex-1">
             {#if $groups.normal.length }
                 <div>

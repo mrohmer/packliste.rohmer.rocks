@@ -1,11 +1,18 @@
 <script lang="ts">
   import "../app.pcss";
   import PoweredBy from "@rohmer/svelte-base/PoweredBy.svelte";
+  import {doubleTap} from '$lib/actions/hammer';  import {slide} from 'svelte/transition';
+  import {dev} from '$app/environment';
+
 
   const name = 'Matthias Rohmer';
   const url = 'https://matthias.rohmer.rocks';
   const technologies = ['svelte', 'netlify'];
   const sourceCodeUrl = 'https://github.com/mrohmer/packing.rohmer.rocks';
+
+  let showAdminLink = false;
+
+  $: console.log(showAdminLink);
 </script>
 
 <style lang="postcss">
@@ -17,11 +24,18 @@
 
 <main class="max-w-4xl mx-auto">
     <div class="content">
-        <slot />
+        <slot/>
     </div>
 </main>
 <footer class="max-w-4xl mx-auto">
-    <PoweredBy {name} {url} {technologies} {sourceCodeUrl} />
+    <div use:doubleTap on:doubletap={() => showAdminLink = true}>
+        <PoweredBy {name} {url} {technologies} {sourceCodeUrl}/>
+    </div>
+    {#if showAdminLink}
+        <div class="flex justify-center my-6 text-neutral-400 text-sm lowercase" transition:slide|local>
+            <a href="/admin{dev ? '/index.html' : ''}" target="_blank">Admin Bereich</a>
+        </div>
+    {/if}
     <div class="flex justify-center space-x-3.5 mt-6 mb-20 text-neutral-400 text-sm lowercase">
         <div>
             <a href="/impressum" class=" transition-colors hover:underline hover:text-neutral-600">Impressum</a>

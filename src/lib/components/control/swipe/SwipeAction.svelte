@@ -2,6 +2,7 @@
   import {createEventDispatcher} from 'svelte';
   import SwipeActionIndicator from "$lib/components/control/swipe/SwipeActionIndicator.svelte";
   import type {Color} from './SwipeActionIndicator.svelte';
+  import {pan} from '$lib/actions/hammer';
 
   export let leftDisabled = false;
   export let rightDisabled = false;
@@ -11,25 +12,6 @@
 
   let transform = 0;
   let panning = false;
-
-  const swipe = async (node: HTMLElement) => {
-    if (typeof window === 'undefined') {
-      return;
-    }
-    const events: Array<string> = [
-      'panleft',
-      'panright',
-      'panstart',
-      'panend',
-    ];
-
-    const {default: Hammer} = await import('hammerjs');
-
-    const hammer = new Hammer(node);
-    for (const event of events) {
-      hammer.on(event, (ev: any) => node.dispatchEvent(new CustomEvent(event, { detail: ev })));
-    }
-  }
 
   const dispatch = createEventDispatcher();
 
@@ -84,7 +66,7 @@
 </script>
 
 <div class="overflow-hidden"
-     use:swipe
+     use:pan
      on:panleft={onPanRight}
      on:panright={onPanLeft}
      on:panstart={onPanStart}

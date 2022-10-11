@@ -1,0 +1,181 @@
+@media (max-width: 799px) {
+    aside.css-1gj57a0-SidebarContainer-card.el9l68m0 {
+        position: static !important;
+        width: 100% !important;
+        margin-bottom: 30px !important;
+    }
+
+    .css-v758ki-AppMainContainer, .css-12b66la-AppHeaderContent {
+        min-width: 0 !important;
+    }
+
+    .css-104dqk8-AppHeaderButton-button-buttonActive-buttonActive-buttonActive-buttonActive-AppHeaderButton, .css-12yqrwa-AppHeaderNavLink-AppHeaderButton-button-buttonActive-buttonActive-buttonActive-buttonActive-AppHeaderButton {
+        margin: 0 !important;
+        padding: 16px 7px !important;
+    }
+
+    .css-1f7nhiq-CollectionMain {
+        padding-left: 0 !important;
+    }
+
+    .css-1hvrgvd-CollectionTopContainer-card-cardTop {
+        width: 100% !important;
+    }
+
+    .css-16b5p1f-ToolbarSectionMain-toolbarSection {
+        flex-direction: column !important;
+        justify-content: space-evenly !important;
+        align-items: start !important;
+        padding: 10px !important;
+    }
+
+    /* Media */
+    .css-1f3mf5k-StyledModal {
+        padding: 15px !important;
+        grid-template-rows: 190px auto !important;
+    }
+
+    .css-svjxk-SearchContainer {
+        display: block !important;
+        width: 100% !important;
+    }
+
+    .css-smzvtl-LibraryTop {
+        flex-direction: column !important;
+    }
+
+    .css-3ifd9s-ActionsContainer {
+        text-align: center !important;
+    }
+
+    .css-1ih1y1j-LibraryTitle {
+        margin-bottom: 15px !important;
+    }
+
+    .css-2ptjc9-UpperActionsContainer {
+        display: inline-block !important;
+    }
+
+    .css-1qukh7n-DownloadButton-button-default-disabled-button {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+
+    .css-13rmovq-StyledUploadButton-button-default-disabled-button-gray {
+        margin-left: 10px !important;
+    }
+
+    .css-1hpjyse-DeleteButton-button-default-disabled-button-lightRed {
+        margin-top: 10px !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+
+    .css-1s67tkf-InsertButton-button-default-disabled-button-green {
+        margin-top: 10px !important;
+        margin-left: 10px !important;
+    }
+
+    .css-16796rj-LowerActionsContainer {
+        display: inline-block !important;
+        margin-top: 0 !important;
+    }
+
+    .css-stmjdx-CardGridContainer  {
+        position: static !important;
+        overflow: visible !important;
+        width: 100% !important;
+        padding-top: 20px !important;
+    }
+    /* End Media */
+
+    /* Blog */
+    .css-hn3jn7-EditorContainer {
+        min-width: 0 !important;
+        padding-top: 0 !important;
+    }
+
+    .css-2oej7z-ToolbarContainer {
+        position: relative !important;
+        height: auto !important;
+        width: 100% !important;
+        min-width: 0 !important;
+        flex-direction: column !important;
+    }
+    .css-abwcjt-ToolbarSectionBackLink-toolbarSection {
+        width: 100% !important;
+        padding-top: 10px !important;
+        padding-bottom: 10px !important;
+    }
+
+    .css-osnbqe-ToolbarToggle {
+        flex-direction: column !important;
+    }
+    /* End Blog */
+
+    /* Optional */
+    span.Resizer.vertical {
+        display: none !important;
+    }
+
+    .Pane.vertical.Pane2 {
+        display: none !important;
+    }
+
+    .Pane.vertical.Pane1 {
+        width: 100% !important;
+    }
+
+    .css-1bqupl5-ViewControls.e1pxf6c47 {
+        display: none !important;
+    }
+
+    .SplitPane.css-7d7n9g-StyledSplitPane-card-splitPane.e1pxf6c41.vertical {
+        display: block !important;
+    }
+
+    .css-134r1tn-RowContainer.ebn7k121 {
+        display: block !important;
+    }
+
+    button.css-6ekon-ActionButton-button-default-disabled-button.eljtsap3 {
+        margin: 0 10px 0 0 !important;
+        font-size: 12px !important;
+        padding: 0 10px !important;
+    }
+
+    .css-1o58c3b-ButtonsContainer.ebn7k122 {
+        text-align: left !important;
+    }
+
+    .css-134r1tn-RowContainer.ebn7k121 {
+        margin-top: 10px !important;
+    }
+
+    button.css-196hm3u-DeleteButton-button-default-disabled-button-lightRed.eljtsap1 {
+        margin: 0 10px 0 0 !important;
+    }
+
+    button.css-d08ild-InsertButton-button-default-disabled-button-green.eljtsap2 {
+        margin-left: 0 !important;
+    }
+
+    .css-1o58c3b-ButtonsContainer.ebn7k122 {
+        margin-top: 10px !important;
+    }
+
+    button.css-579ih7-ActionButton-button-default-disabled-button-gray-ActionButton.eljtsap3 {
+        margin: 0 10px 0 0 !important;
+        font-size: 12px !important;
+        padding: 0 10px !important;
+    }
+
+    label.nc-fileUploadButton.css-1fb6kv1-UploadButton-button-default-disabled-button-gray.eljtsap0 {
+        margin-left: 0 !important;
+    }
+
+    .ep5ukwb0.css-1f3mf5k-StyledModal {
+        width: calc(100% - 60px) !important;
+        height: calc(100% - 60px) !important;
+    }
+}

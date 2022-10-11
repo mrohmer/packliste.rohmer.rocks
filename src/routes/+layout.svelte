@@ -11,8 +11,6 @@
   const sourceCodeUrl = 'https://github.com/mrohmer/packing.rohmer.rocks';
 
   let showAdminLink = false;
-
-  $: console.log(showAdminLink);
 </script>
 
 <style lang="postcss">

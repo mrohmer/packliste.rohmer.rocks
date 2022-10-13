@@ -3,7 +3,8 @@ import {warmStrategyCache} from 'workbox-recipes';
 import {setDefaultHandler} from 'workbox-routing';
 import {CacheFirst} from 'workbox-strategies';
 
-console.log(files, prerendered, build, version);
+(self as any).__WB_DISABLE_DEV_LOGS = true;
+
 const strategy = new CacheFirst({cacheName: `static-${version}`});
 const urls = [
   ...files,

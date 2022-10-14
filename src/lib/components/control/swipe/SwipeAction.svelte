@@ -12,6 +12,7 @@
 
   let transform = 0;
   let panning = false;
+  let preventClicks = false;
 
   const dispatch = createEventDispatcher();
 
@@ -19,7 +20,16 @@
   const dispatchRight = () => !rightDisabled && dispatch('right');
 
   const updatePosition = (delta: number) => {
-    transform = Math.sign(delta) * Math.min(Math.abs(delta), threshold);
+    let tmp = Math.sign(delta) * Math.min(Math.abs(delta), threshold);
+
+    if (!hasLeft) {
+      tmp = Math.min(tmp, 0);
+    }
+    if (!hasRight) {
+      tmp = Math.max(tmp, 0);
+    }
+
+    transform = tmp;
   };
 
   const preventClick = event => {
@@ -28,7 +38,10 @@
       return false;
     }
   }
-  const onPanStart = () => panning = true;
+  const onPanStart = () => {
+    panning = true;
+    setTimeout(() => preventClicks = true, 50);
+  }
   const onPanEnd = (event) => {
     panning = false;
     const {deltaX} = event.detail;
@@ -44,19 +57,10 @@
     }
 
     setTimeout(() => transform = 0, 100);
+    setTimeout(() => preventClicks = false, 50);
   }
-  const onPanRight = (event) => {
+  const onPan = (event) => {
     const {deltaX} = event.detail;
-    if (!hasRight) {
-      return;
-    }
-    updatePosition(deltaX);
-  };
-  const onPanLeft = (event) => {
-    const {deltaX} = event.detail;
-    if (!hasLeft) {
-      return;
-    }
     updatePosition(deltaX);
   };
 
@@ -67,13 +71,13 @@
 
 <div class="overflow-hidden"
      use:pan
-     on:panleft={onPanRight}
-     on:panright={onPanLeft}
+     on:panleft={onPan}
+     on:panright={onPan}
      on:panstart={onPanStart}
      on:panend={onPanEnd}
      on:click={preventClick}
 >
-    <div class:transition-all={!panning} style="margin-left: {transform}px">
+    <div class:transition-all={!panning} class:pointer-events-none={preventClicks} style="margin-left: {transform}px">
         <slot/>
     </div>
     {#if hasLeft}

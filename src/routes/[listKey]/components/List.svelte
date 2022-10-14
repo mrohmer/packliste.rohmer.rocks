@@ -93,7 +93,7 @@
             {#if $groups.normal.length }
                 <div>
                     <ExpansionPanelGroup multipleOpen="{true}">
-                        {#each $groups.normal as group}
+                        {#each $groups.normal as group (group.key)}
                             <div transition:slide|local>
                                 <Group {...group}
                                        on:right={({detail}) => onChangeIrrelevant(true, group.key, detail.itemKey)}
@@ -114,7 +114,7 @@
                 <div class="opacity-50 mt-24" transition:slide|local>
                     <h3 class="uppercase text-center text-xl">Irrelevant</h3>
                     <ExpansionPanelGroup multipleOpen="{true}">
-                        {#each $groups.irrelevant as group}
+                        {#each $groups.irrelevant as group (group.key)}
                             <div transition:slide|local>
                                 <Group {...group}
                                        on:right={({detail}) => onChangeIrrelevant(false, group.key, detail.itemKey)}

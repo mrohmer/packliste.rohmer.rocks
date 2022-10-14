@@ -33,7 +33,7 @@
                 </div>
             </div>
         </div>
-        {#each items as item}
+        {#each items as item (item.key)}
             <div class="sm:pl-10" transition:slide|local>
                 <SwipeAction on:right={() => dispatcher('right', {itemKey: item.key})} rightColor={swipeActionColor}>
                     {#key item.key}

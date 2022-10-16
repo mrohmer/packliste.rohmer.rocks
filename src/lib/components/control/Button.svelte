@@ -8,7 +8,7 @@
   export {klass as class};
 </script>
 
-<button on:click {disabled} class="bg-transparent border border-primary text-primary rounded px-4 py-2.5 cursor-pointer mr-2.5 mb-2.5 transition-colors hover:bg-gray-100 {klass}">
+<button on:click {disabled} class="bg-transparent border border-neutral-500 rounded px-4 py-2.5 cursor-pointer mr-2.5 mb-2.5 transition-colors hover:bg-gray-100 dark:border-neutral-400 dark:hover:bg-gray-700 {klass}">
     {#if variant === 'icon'}
         <Icon>
             <slot/>

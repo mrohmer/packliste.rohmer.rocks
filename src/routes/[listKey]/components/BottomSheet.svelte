@@ -58,23 +58,23 @@
 </script>
 
 {#if $anyItemsChanged}
-    <div class="pt-2 fixed left-0 right-0 bottom-0 bg-white border-t border-neutral-100 z-10" transition:slide|local>
+    <div class="pt-2 fixed left-0 right-0 bottom-0 bg-white border-t border-neutral-100 z-20 dark:bg-zinc-800 dark:border-neutral-400 transition-colors" transition:slide|local>
         <div class="px-2.5 pb-1 flex items-center max-w-4xl mx-auto">
             <div class="h-10 w-10 mr-2.5 text-xs">
                 <CircleProgress percentage="{(($done ?? 0) / ($total ?? 0)) * 100}"/>
             </div>
             <div class="h-full flex-1 text-sm py-1">
                 <div>
-                    <span class="text-primary font-semibold">{$done ?? 0}</span> Aufgabe{($done ?? 0) !== 1 ? 'n' : ''} erledigt
+                    <span class="text-primary font-semibold dark:font-bold transition-colors">{$done ?? 0}</span> Aufgabe{($done ?? 0) !== 1 ? 'n' : ''} erledigt
                 </div>
-                <div class="text-neutral-400">
+                <div class="text-neutral-400 dark:text-neutral-300 transition-colors">
                     von insgesamt {($total ?? 0)}
                 </div>
             </div>
-            <div class="text-neutral-300 px-2.5 transition-colors cursor-pointer leading-10 hover:text-neutral-500" class:hidden={menuOpen} on:click={() => menuOpen = !menuOpen}>
+            <div class="text-neutral-300 px-2.5 transition-colors cursor-pointer leading-10 hover:text-neutral-500 dark:hover:text-neutral-50" class:hidden={menuOpen} on:click={() => menuOpen = !menuOpen}>
                 <Icon>ellipsis-v</Icon>
             </div>
-            <div class="text-neutral-300 px-2.5 transition-colors cursor-pointer hover:text-neutral-500 -mr-1" class:hidden={!menuOpen}
+            <div class="text-neutral-300 px-2.5 transition-colors cursor-pointer hover:text-neutral-500 dark:hover:text-neutral-50 -mr-1" class:hidden={!menuOpen}
                  on:click={() => menuOpen = !menuOpen}>
                 <Icon>times</Icon>
             </div>

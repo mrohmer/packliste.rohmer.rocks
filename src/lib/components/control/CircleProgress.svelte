@@ -28,7 +28,7 @@
     </svg>
     <div class="h-full w-full">
         <slot>
-            <span class="absolute left-1/2 top-1/2 -translate-x-2/4 -translate-y-2/4">{percentage.toFixed(0)}<span class="text-slate-400 font-light">%</span></span>
+            <span class="absolute left-1/2 top-1/2 -translate-x-2/4 -translate-y-2/4">{percentage.toFixed(0)}<span class="text-gray-400 font-light">%</span></span>
         </slot>
     </div>
 </div>

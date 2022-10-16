@@ -42,12 +42,12 @@
     }
 
     .checkbox input[type="checkbox"]:checked + label {
-        @apply text-[#C3C8DE];
+        @apply text-gray-400;
         animation: move .3s ease .1s forwards;
     }
 
     .checkbox input[type="checkbox"]:checked + label span::before {
-        @apply bg-[#C3C8DE];
+        @apply bg-gray-400;
         animation: slice .4s ease forwards;
     }
 
@@ -127,14 +127,14 @@
     @keyframes firework {
         0% {
             opacity: 1;
-            box-shadow: 0 0 0 -2px #4F29F0, 0 0 0 -2px #4F29F0, 0 0 0 -2px #4F29F0, 0 0 0 -2px #4F29F0, 0 0 0 -2px #4F29F0, 0 0 0 -2px #4F29F0;
+            box-shadow: 0 0 0 -2px #236BEF, 0 0 0 -2px #236BEF, 0 0 0 -2px #236BEF, 0 0 0 -2px #236BEF, 0 0 0 -2px #236BEF, 0 0 0 -2px #236BEF;
         }
         30% {
             opacity: 1;
         }
         100% {
             opacity: 0;
-            box-shadow: 0 -15px 0 0px #4F29F0, 14px -8px 0 0px #4F29F0, 14px 8px 0 0px #4F29F0, 0 15px 0 0px #4F29F0, -14px 8px 0 0px #4F29F0, -14px -8px 0 0px #4F29F0;
+            box-shadow: 0 -15px 0 0px #236BEF, 14px -8px 0 0px #236BEF, 14px 8px 0 0px #236BEF, 0 15px 0 0px #236BEF, -14px 8px 0 0px #236BEF, -14px -8px 0 0px #236BEF;
         }
     }
 </style>
@@ -142,7 +142,7 @@
 <div class="checkbox w-full h-10 rounded-lg p-2.5 flex items-center mb-px">
     <div class="absolute top-0 left-0 right-0 bottom-0 w-full h-full cursor-pointer" on:click={() => checked = !checked}></div>
     <input id="{inputId}" type="checkbox" value="1" {checked} on:change class="h-4 w-4 border-0 mr-4 cursor-pointer grid items-center outline-[none] appearance-none">
-    <label for="{inputId}" class="text-[#414856] cursor-pointer items-center transition-colors duration-300 flex-1">
+    <label for="{inputId}" class="text-gray-500 cursor-pointer items-center transition-colors duration-300 flex-1 dark:text-gray-200">
         <span class="inline-block w-fit pr-1"><slot /></span>
     </label>
 </div>

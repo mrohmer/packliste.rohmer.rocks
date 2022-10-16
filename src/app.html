@@ -8,15 +8,31 @@
 		<meta name="description" content="Digitale Packliste.">
 		<meta name="robots" content="noindex nofollow" />
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta name="theme-color" content="#4F29F0" />
+		<meta name="theme-color" content="#236BEF" />
 		<link rel="manifest" href="/manifest.json" />
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<meta name="apple-mobile-web-app-title" content="Packliste" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
 
+		<script>
+			if (!('theme' in localStorage)) {
+				if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+					document.documentElement.classList.add('dark');
+				} else {
+					document.documentElement.classList.remove('dark');
+				}
+			} else {
+				var data = localStorage.getItem('theme');
+				if (data) {
+					data = JSON.parse(data);
+					document.documentElement.classList.add(data.mode);
+				}
+			}
+		</script>
+
 		%sveltekit.head%
 	</head>
-	<body data-sveltekit-prefetch>
+	<body data-sveltekit-prefetch class="dark:bg-zinc-800 dark:text-white transition-colors">
 		<div>%sveltekit.body%</div>
 	</body>
 </html>

@@ -111,7 +111,7 @@
             {/if}
 
             {#if $groups.irrelevant.length }
-                <div class="opacity-50 mt-24" transition:slide|local>
+                <div class="opacity-50 mt-24 dark:opacity-80 transition-opacity" transition:slide|local>
                     <h3 class="uppercase text-center text-xl">Irrelevant</h3>
                     <ExpansionPanelGroup multipleOpen="{true}">
                         {#each $groups.irrelevant as group (group.key)}

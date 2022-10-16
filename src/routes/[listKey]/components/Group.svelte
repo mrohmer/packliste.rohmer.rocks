@@ -28,7 +28,7 @@
                 <div>
                     {label}
                 </div>
-                <div class="text-neutral-500 text-[10px] leading-[7px]">
+                <div class="text-neutral-500 text-[10px] leading-[7px] dark:text-neutral-300 transition-colors">
                     {finishedItems.length} / {items.length}
                 </div>
             </div>

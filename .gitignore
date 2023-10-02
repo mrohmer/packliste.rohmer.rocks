@@ -6,13 +6,5 @@ node_modules
 .env
 .env.*
 !.env.example
-
-/node_modules/
-/public/build/
-/public/sw.js
-/public/workbox-*
-
-.DS_Store
-
-.idea
-.vscode
+vite.config.js.timestamp-*
+vite.config.ts.timestamp-*

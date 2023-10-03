@@ -9,7 +9,12 @@
 	export let data: PageData;
 
 	// Client API:
-	const { form, enhance } = superForm(data.form, { dataType: 'json' });
+	const { form, enhance, capture, restore } = superForm(data.form, {
+		dataType: 'json',
+		taintedMessage: null
+	});
+
+	export const snapshot = { capture, restore };
 
 	const fb = (value: string, fallback) => (value?.trim() ? value : fallback);
 	const confirmDelete = (name: string) => confirm(`Willst du ${name.trim()} wirklich löschen?`);
@@ -111,7 +116,7 @@
 			/>
 		{/each}
 
-		<button class="btn" type="button" on:click={onAddGroup()}> Gruppe hinzufügen </button>
+		<button class="btn" type="button" on:click={onAddGroup()}> Gruppe hinzufügen</button>
 
 		<button class="btn btn-primary" type="submit">Submit</button>
 	</form>

@@ -1,14 +1,12 @@
 <script lang="ts">
 	import type { PageData } from './$types';
-	import Header from './_/components/Header.svelte';
 	import ListItem from './_/components/ListItem.svelte';
 	import ListList from './_/components/ListList.svelte';
 
 	export let data: PageData;
 </script>
 
-<div class="w-full max-w-2xl px-2 mx-auto flex flex-col gap-2">
-	<Header />
+<div class="flex flex-col gap-2">
 	<div>
 		<h2 class="text-2xl mb-2">Meine Listen</h2>
 

@@ -35,15 +35,16 @@ model Session {
 }
 
 model User {
-  id            String    @id @default(auto()) @map("_id") @db.ObjectId
+  id            String          @id @default(auto()) @map("_id") @db.ObjectId
   name          String?
-  code          String?   @unique
-  email         String?   @unique
+  code          String?         @unique
+  email         String?         @unique
   emailVerified DateTime?
   image         String?
   accounts      Account[]
   sessions      Session[]
   lists         List[]
+  ListItemState ListItemState[]
 }
 
 model VerificationToken {
@@ -55,37 +56,54 @@ model VerificationToken {
 }
 
 model List {
-  id     String      @id @default(auto()) @map("_id") @db.ObjectId
-  name   String
-  groups ListGroup[]
-  items  ListItem[]
-  userId String      @db.ObjectId
-  user   User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  id        String      @id @default(auto()) @map("_id") @db.ObjectId
+  name      String
+  groups    ListGroup[]
+  items     ListItem[]
+  userId    String      @db.ObjectId
+  user      User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @default(now())
 
   @@unique([name, userId])
 }
 
 model ListGroup {
-  id     String     @id @default(auto()) @map("_id") @db.ObjectId
-  name   String
-  order  Int
-  listId String     @db.ObjectId
-  list   List       @relation(fields: [listId], references: [id], onDelete: Cascade)
-  items  ListItem[]
+  id        String     @id @default(auto()) @map("_id") @db.ObjectId
+  name      String
+  order     Int
+  listId    String     @db.ObjectId
+  list      List       @relation(fields: [listId], references: [id], onDelete: Cascade)
+  items     ListItem[]
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @default(now())
 
   @@unique([name, listId])
 }
 
 model ListItem {
-  id      String     @id @default(auto()) @map("_id") @db.ObjectId
-  name    String
-  order   Int
-  count   Int
-  checked Boolean?
-  groupId String?    @db.ObjectId
-  group   ListGroup? @relation(fields: [groupId], references: [id], onDelete: Cascade)
-  listId  String?    @db.ObjectId
-  list    List?      @relation(fields: [listId], references: [id], onDelete: Cascade)
+  id        String         @id @default(auto()) @map("_id") @db.ObjectId
+  name      String
+  order     Int
+  count     Int
+  stateId   String?        @db.ObjectId
+  state     ListItemState? @relation(fields: [stateId], references: [id], onDelete: Cascade)
+  groupId   String?        @db.ObjectId
+  group     ListGroup?     @relation(fields: [groupId], references: [id], onDelete: Cascade)
+  listId    String?        @db.ObjectId
+  list      List?          @relation(fields: [listId], references: [id], onDelete: Cascade)
+  createdAt DateTime       @default(now())
+  updatedAt DateTime       @default(now())
 
   @@unique([name, listId, groupId])
+}
+
+model ListItemState {
+  id              String     @id @default(auto()) @map("_id") @db.ObjectId
+  ListItem        ListItem[]
+  state           Int        @default(0)
+  changedByUserId String     @db.ObjectId
+  changedBy       User       @relation(fields: [changedByUserId], references: [id], onDelete: Cascade)
+  createdAt       DateTime   @default(now())
+  updatedAt       DateTime   @default(now())
 }

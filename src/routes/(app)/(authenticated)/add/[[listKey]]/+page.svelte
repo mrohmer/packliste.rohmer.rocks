@@ -87,7 +87,7 @@
 	};
 </script>
 
-<div class="w-full max-w-2xl px-2 mx-auto flex flex-col gap-2">
+<div class="flex flex-col gap-2">
 	<form method="POST" use:enhance class="flex flex-col gap-4">
 		<Input bind:value={$form.name}>Name</Input>
 

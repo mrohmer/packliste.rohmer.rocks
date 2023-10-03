@@ -48,6 +48,8 @@
 		"@auth/core": "^0.16.0",
 		"@auth/prisma-adapter": "^1.0.2",
 		"@auth/sveltekit": "^0.3.8",
-		"@prisma/client": "^5.3.1"
+		"@prisma/client": "^5.3.1",
+		"workbox-recipes": "^6.5.4",
+		"workbox-strategies": "^6.5.4"
 	}
 }

@@ -1,13 +1,13 @@
 interface IBase {
-  key: string;
-  label: string;
+	key: string;
+	label: string;
 }
 export interface IList extends IBase {
-  groups: IListGroup[];
+	groups: IListGroup[];
 }
 
 export interface IListGroup extends IBase {
-  items: IListItem[];
+	items: IListItem[];
 }
 
 export type IListItem = IBase;

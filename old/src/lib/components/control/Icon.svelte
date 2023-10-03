@@ -1,12 +1,11 @@
 <script lang="ts">
-  import "@fortawesome/fontawesome-free/js/all"
+	import '@fortawesome/fontawesome-free/js/all';
 
-  let slotObj: HTMLSpanElement;
+	let slotObj: HTMLSpanElement;
 
-  $: icon = slotObj?.textContent;
+	$: icon = slotObj?.textContent;
 </script>
 
-<i class="fa fa-{icon}"></i>
+<i class="fa fa-{icon}" />
 
-<span class="hidden" bind:this={slotObj}><slot/></span>
-
+<span class="hidden" bind:this={slotObj}><slot /></span>

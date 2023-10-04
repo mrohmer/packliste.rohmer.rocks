@@ -93,6 +93,7 @@ export const actions: Actions = {
 			},
 			data: {
 				name,
+				updatedAt: new Date(),
 				items: items?.length
 					? {
 							update: items.map((item, ii) => ({

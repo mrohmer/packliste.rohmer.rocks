@@ -32,12 +32,12 @@
 			{#if expanded && $$slots.head}
 				<slot name="head" />
 			{:else}
-				<div class="cursor-pointer" on:click={toggleExpand()}>
+				<button type="button" class="text-left w-full" on:click={toggleExpand()}>
 					<h2 class="text-xl">{title ?? ''}</h2>
 					{#if subTitle?.trim()}
 						<h2 transition:slide|local class="text-xs text-neutral-400">{subTitle}</h2>
 					{/if}
-				</div>
+				</button>
 			{/if}
 		</div>
 		{#if hasDelete}

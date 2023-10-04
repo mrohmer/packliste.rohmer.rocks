@@ -1,7 +1,7 @@
-import { postType, list, required, field } from 'netlify-cms-quick-fields';
+import { list, postType, required } from 'netlify-cms-quick-fields';
 
 export const getCollections = () => {
-	const keyParams = (type: string) => ({
+	const keyParams = () => ({
 		label: false,
 		pattern: ['^[a-z0-9\\-]*$', 'Must be valid slug.'],
 		widget: 'uuid'
@@ -10,7 +10,7 @@ export const getCollections = () => {
 		postType(
 			'lists',
 			[
-				required('key', keyParams('List')),
+				required('key', keyParams()),
 				required('label', { label: 'Label' }),
 				required('path', {
 					label: 'Url identifier',
@@ -19,16 +19,12 @@ export const getCollections = () => {
 				list(
 					'groups',
 					[
-						required('key', keyParams('Group')),
+						required('key', keyParams()),
 						required('label', { label: 'Label' }),
-						list(
-							'items',
-							[required('key', keyParams('Item')), required('label', { label: 'Label' })],
-							{
-								label: 'Items',
-								summary: '{{label}}'
-							}
-						)
+						list('items', [required('key', keyParams()), required('label', { label: 'Label' })], {
+							label: 'Items',
+							summary: '{{label}}'
+						})
 					],
 					{
 						label: 'Gruppen',

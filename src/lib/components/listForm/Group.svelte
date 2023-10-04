@@ -6,7 +6,7 @@
 	import { createEventDispatcher } from 'svelte';
 
 	const dispatcher = createEventDispatcher();
-	const dispatch = (event: string, detail?: any) => () => dispatcher(event, detail);
+	const dispatch = (event: string, detail?: unknown) => () => dispatcher(event, detail);
 
 	export let value: PageData['form']['data']['groups'][number];
 	export let index: number;

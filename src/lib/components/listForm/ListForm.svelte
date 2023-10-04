@@ -5,8 +5,8 @@
 	import Input from '$lib/components/Input.svelte';
 	import type { SuperForm } from 'sveltekit-superforms/client';
 
-	export let form: SuperForm<any>['form'];
-	export let enhance: SuperForm<any>['enhance'];
+	export let form: SuperForm<unknown>['form'];
+	export let enhance: SuperForm<unknown>['enhance'];
 
 	const fb = (value: string, fallback) => (value?.trim() ? value : fallback);
 	const confirmDelete = (name: string) => confirm(`Willst du ${name.trim()} wirklich löschen?`);

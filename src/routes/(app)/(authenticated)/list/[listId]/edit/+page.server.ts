@@ -1,9 +1,7 @@
-import type { PageLoad } from './$types';
+import type { Actions, PageLoad } from './$types';
 import { z } from 'zod';
-import { superValidate } from 'sveltekit-superforms/server';
-import type { Actions } from './$types';
+import { setError, superValidate } from 'sveltekit-superforms/server';
 import { error, fail, redirect } from '@sveltejs/kit';
-import { setError } from 'sveltekit-superforms/server';
 import { getUserId } from '$lib/server/api/get-user-id';
 import { prisma } from '$lib/server/db';
 
@@ -88,7 +86,7 @@ export const actions: Actions = {
 			return fail(409, { form });
 		}
 
-		const result = await prisma.list.update({
+		await prisma.list.update({
 			where: {
 				id: params.listId,
 				userId

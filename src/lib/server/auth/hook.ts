@@ -4,7 +4,9 @@ import { prisma } from '$lib/server/db';
 import { env } from '$env/dynamic/private';
 import type { Handle } from '@sveltejs/kit';
 import Google from '@auth/core/providers/google';
-export const doAuth = SvelteKitAuth(async (event) => ({
+import type { User } from '@auth/core/types';
+
+export const doAuth = SvelteKitAuth(async () => ({
 	adapter: PrismaAdapter(prisma),
 	providers: [Google({ clientId: env.GOOGLE_CLIENT_ID, clientSecret: env.GOOGLE_SECRET })],
 	secret: env.AUTH_SECRET,
@@ -20,7 +22,7 @@ export const doAuth = SvelteKitAuth(async (event) => ({
 	callbacks: {
 		session: async ({ session, token }) => {
 			if (session?.user) {
-				(session.user as any).id = token.uid;
+				(session.user as User).id = token.uid as string;
 			}
 			return session;
 		},

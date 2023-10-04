@@ -3,7 +3,6 @@
 	import Input from '$lib/components/Input.svelte';
 	import NumberInput from '$lib/components/NumberInput.svelte';
 	import { createEventDispatcher } from 'svelte';
-	import GroupBorder from '$lib/components/listForm/GroupBorder.svelte';
 
 	const dispatcher = createEventDispatcher();
 	const dispatch = (event: string) => () => dispatcher(event);

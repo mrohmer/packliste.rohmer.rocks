@@ -3,6 +3,7 @@
 	import Input from '$lib/components/Input.svelte';
 	import NumberInput from '$lib/components/NumberInput.svelte';
 	import { createEventDispatcher } from 'svelte';
+	import GroupBorder from '$lib/components/listForm/GroupBorder.svelte';
 
 	const dispatcher = createEventDispatcher();
 	const dispatch = (event: string) => () => dispatcher(event);
@@ -11,13 +12,16 @@
 </script>
 
 <div class="flex gap-2">
+	{#if value.id}
+		<input type="hidden" name="id" value={value.id} />
+	{/if}
 	<div class="w-14">
 		<NumberInput bind:value={value.count} min="1" max="9" step="1" />
 	</div>
 	<div class="flex-1">
 		<Input bind:value={value.name} placeholder="Elementname" />
 	</div>
-	<button class="btn btn-square btn-outline btn-error" on:click={dispatch('delete')}>
+	<button type="button" class="btn btn-square btn-outline btn-error" on:click={dispatch('delete')}>
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
 			class="h-6 w-6"

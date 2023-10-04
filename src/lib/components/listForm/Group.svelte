@@ -19,6 +19,9 @@
 	on:delete
 	on:add
 >
+	{#if value.id}
+		<input type="hidden" name="id" value={value.id} />
+	{/if}
 	<Input bind:value={value.name} placeholder="Gruppenname" slot="head" />
 	<div class="flex flex-col gap-4">
 		{#each value.items ?? [] as _, index}

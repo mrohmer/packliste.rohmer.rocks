@@ -15,7 +15,7 @@
 
 <div class="border-2 rounded-lg flex flex-col gap-2">
 	<div class="bg-neutral-200 px-2 py-3 flex gap-2 items-center">
-		<button class="p-2" on:click={toggleExpand()}>
+		<button type="button" class="p-2" on:click={toggleExpand()}>
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
 				fill="none"
@@ -41,7 +41,11 @@
 			{/if}
 		</div>
 		{#if hasDelete}
-			<button class="btn btn-square btn-outline btn-error" on:click={dispatch('delete')}>
+			<button
+				type="button"
+				class="btn btn-square btn-outline btn-error"
+				on:click={dispatch('delete')}
+			>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					class="h-6 w-6"

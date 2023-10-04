@@ -10,7 +10,7 @@ export const load: PageLoad = async ({ fetch, locals }) => {
 			where: { userId }
 		}),
 		streamed: {
-			templates: fetch('/api/lists').then((r: Response) => r.json() as Promise<ContentList[]>)
+			templates: fetch('/api/templates').then((r: Response) => r.json() as Promise<ContentList[]>)
 		}
 	};
 };

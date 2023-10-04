@@ -45,7 +45,7 @@ const prepareData = async (
 	if (!listKey?.trim?.()) {
 		return undefined;
 	}
-	const data = await loadApi<ContentList>(fetch, `/api/lists/${listKey}`);
+	const data = await loadApi<ContentList>(fetch, `/api/templates/${listKey}`);
 	if (!data) {
 		throw error(404);
 	}
@@ -66,7 +66,7 @@ export const load: PageLoad = async ({ fetch, params }) => {
 	return {
 		form: superValidate(data, schema),
 		streamed: {
-			templates: loadApi<ContentList[]>(fetch, '/api/lists')
+			templates: loadApi<ContentList[]>(fetch, '/api/templates')
 		}
 	};
 };

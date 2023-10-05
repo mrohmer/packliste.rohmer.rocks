@@ -9,14 +9,18 @@
 
 {#if data.list}
 	<Content>
-		<div class="flex flex-col gap-12">
+		<div class="flex flex-col gap-4">
 			{#if data.list.items?.length}
 				<List items={data.list.items} />
 			{/if}
 
-			{#each data.list.groups as group (group.id)}
-				<GroupLink {group} listId={data.list.shortId} />
-			{/each}
+			{#if data.list.groups?.length}
+				<div class="mt-4 flex flex-col gap-4">
+					{#each data.list.groups as group (group.id)}
+						<GroupLink {group} listId={data.list.shortId} />
+					{/each}
+				</div>
+			{/if}
 		</div>
 	</Content>
 {/if}

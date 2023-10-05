@@ -6,6 +6,7 @@
 	import { fly } from 'svelte/transition';
 	import { calcProgressInList } from '$lib/utils/progress';
 	import Progress from './_/components/Progress.svelte';
+	import Logo from '$lib/components/Logo.svelte';
 
 	export let data: PageData;
 
@@ -23,7 +24,7 @@
 
 <Progress percentage={listProgress.percentage} />
 <Navbar user={data?.user}>
-	<a href={backLink} class="block p-3 -ml-3">
+	<a href={backLink} class="block p-3 -ml-3 flex gap-2">
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
 			fill="none"
@@ -34,6 +35,9 @@
 		>
 			<path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
 		</svg>
+		<div>
+			<Logo withName={false} />
+		</div>
 	</a>
 	<div class="flex-1 flex flex-col items-start">
 		<div class="text-2xl leading-8">

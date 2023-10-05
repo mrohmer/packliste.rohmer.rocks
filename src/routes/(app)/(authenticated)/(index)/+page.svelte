@@ -23,7 +23,7 @@
 				<div class="text-lg">Noch keine Listen angelegt</div>
 			{/if}
 			<div class="divider my-1 h-px" />
-			<a href="/add" class="btn"> Neue Liste anlegen </a>
+			<a href="/l/add" class="btn"> Neue Liste anlegen </a>
 			<div class="min-h-16">
 				{#await data?.streamed?.templates}
 					<div class="h-16 w-full flex items-center justify-center absolute left-0 right-0 top-0">
@@ -36,7 +36,7 @@
 							<ListList count={templates.length}>
 								{#each templates as { label, groups, key, path } (key)}
 									<ListItem
-										href="/add/{path}"
+										href="/l/add/{path}"
 										itemCount={groups?.reduce((prev, curr) => prev + (curr?.items?.length ?? 0), 0)}
 									>
 										{label}

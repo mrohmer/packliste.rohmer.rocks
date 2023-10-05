@@ -11,7 +11,8 @@ const findItem = (list: CompleteList, id: string): ListItemWithState | undefined
 	);
 
 const onChangeHandler =
-	(list: CompleteList) => async (id: string, operation: Operation, update: UpdateCallback) => {
+	(list: CompleteList, onChange?: () => void) =>
+	async (id: string, operation: Operation, update: UpdateCallback) => {
 		const item = findItem(list, id);
 		if (!item) {
 			return;
@@ -31,7 +32,8 @@ const onChangeHandler =
 			return;
 		}
 
-		update(item.state.state);
+		update?.(item.state.state);
+		onChange?.();
 
 		try {
 			await fetch(`/api/items/${id}/state`, {
@@ -50,7 +52,8 @@ const onChangeHandler =
 	};
 
 export const ListPageContext = {
-	create: (list: CompleteList) => setContext(onChangeKey, onChangeHandler(list)),
+	create: (list: CompleteList, onChange?: () => void) =>
+		setContext(onChangeKey, onChangeHandler(list, onChange)),
 	use: () => ({
 		change: getContext<ReturnType<typeof onChangeHandler>>(onChangeKey)
 	})

@@ -7,8 +7,8 @@ import { prisma } from '$lib/server/db';
 import { nanoid } from 'nanoid';
 
 const itemSchema = z.object({
-	id: z.string(),
-	shortId: z.string(),
+	id: z.string().optional(),
+	shortId: z.string().optional(),
 	name: z.string(),
 	count: z.number().positive().max(9).optional()
 });
@@ -18,8 +18,8 @@ const itemsSchema = z
 		message: 'Namen müssen eindeutig sein'
 	});
 const groupSchema = z.object({
-	id: z.string(),
-	shortId: z.string(),
+	id: z.string().optional(),
+	shortId: z.string().optional(),
 	name: z.string(),
 	items: itemsSchema
 });
@@ -125,7 +125,16 @@ const createUpsertGroupRequest = (group: z.infer<typeof groupSchema>, index: num
 		name: group.name!,
 		order: index * 100,
 		items: group.items?.length
-			? { upsert: group.items.map((item, ii) => createUpsertItemRequest(item, ii)) }
+			? {
+					upsert: group.items
+						.map((item, ii) => ({ item, ii }))
+						.filter(({ item }) => !!item.id)
+						.map(({ item, ii }) => createUpsertItemRequest(item, ii)),
+					create: group.items
+						.map((item, ii) => ({ item, ii }))
+						.filter(({ item }) => !item.id)
+						.map(({ item, ii }) => createCreateItemRequest(item, ii))
+			  }
 			: undefined
 	}
 });

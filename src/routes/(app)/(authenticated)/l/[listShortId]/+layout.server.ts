@@ -1,10 +1,10 @@
-import type { PageLoad } from './$types';
+import type { LayoutServerLoad } from './$types';
 import { prisma } from '$lib/server/db';
 import { error } from '@sveltejs/kit';
 import { getUserId } from '$lib/server/api/get-user-id';
 
-export const load: PageLoad = async ({ params, locals }) => {
-	if (!params?.listId?.trim()) {
+export const load: LayoutServerLoad = async ({ params, locals }) => {
+	if (!params?.listShortId?.trim()) {
 		throw error(404);
 	}
 
@@ -12,13 +12,21 @@ export const load: PageLoad = async ({ params, locals }) => {
 	const list = await prisma.list.findUnique({
 		where: {
 			userId,
-			id: params.listId
+			shortId: params.listShortId
 		},
 		include: {
-			items: true,
+			items: {
+				include: {
+					state: true
+				}
+			},
 			groups: {
 				include: {
-					items: true
+					items: {
+						include: {
+							state: true
+						}
+					}
 				}
 			}
 		}

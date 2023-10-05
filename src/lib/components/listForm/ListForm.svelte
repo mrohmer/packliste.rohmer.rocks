@@ -88,6 +88,9 @@
 	{#if $form.id}
 		<input type="hidden" name="id" value={$form.id} />
 	{/if}
+	{#if $form.shortId}
+		<input type="hidden" name="shortId" value={$form.shortId} />
+	{/if}
 
 	<Input bind:value={$form.name}>Name</Input>
 

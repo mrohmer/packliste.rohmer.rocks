@@ -14,6 +14,9 @@
 	{#if value.id}
 		<input type="hidden" name="id" value={value.id} />
 	{/if}
+	{#if value.shortId}
+		<input type="hidden" name="shortId" value={value.shortId} />
+	{/if}
 	<div class="w-14">
 		<NumberInput bind:value={value.count} min="1" max="9" step="1" />
 	</div>

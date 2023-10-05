@@ -13,8 +13,8 @@
 		<div class="flex flex-col gap-4">
 			{#if data?.lists?.length}
 				<ListList count={data.lists.length}>
-					{#each data.lists as { id, name }}
-						<ListItem href="/list/{id}">
+					{#each data.lists as { shortId, name } (shortId)}
+						<ListItem href="/l/{shortId}">
 							{name}
 						</ListItem>
 					{/each}

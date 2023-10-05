@@ -5,6 +5,7 @@ import { setError, superValidate } from 'sveltekit-superforms/server';
 import { error, fail, redirect } from '@sveltejs/kit';
 import { prisma } from '$lib/server/db';
 import { getUserId } from '$lib/server/api/get-user-id';
+import { nanoid } from 'nanoid';
 
 const itemsSchema = z
 	.array(
@@ -113,12 +114,14 @@ export const actions: Actions = {
 			data: {
 				name,
 				userId,
+				shortId: nanoid(10),
 				items: items?.length
 					? {
 							create: items.map((item, ii) => ({
 								order: ii * 100,
 								name: item.name,
-								count: item.count ?? 1
+								count: item.count ?? 1,
+								shortId: nanoid(10)
 							}))
 					  }
 					: undefined,
@@ -127,12 +130,14 @@ export const actions: Actions = {
 							create: groups.map((group, gi) => ({
 								name: group.name,
 								order: gi * 100,
+								shortId: nanoid(10),
 								items: group.items?.length
 									? {
 											create: group.items.map((item, ii) => ({
 												order: ii * 100,
 												name: item.name,
-												count: item.count ?? 1
+												count: item.count ?? 1,
+												shortId: nanoid(10)
 											}))
 									  }
 									: undefined
@@ -142,6 +147,6 @@ export const actions: Actions = {
 			}
 		});
 
-		throw redirect(303, `/list/${list.id}`);
+		throw redirect(303, `/l/${list.shortId}`);
 	}
 };

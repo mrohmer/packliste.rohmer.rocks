@@ -57,6 +57,7 @@ model VerificationToken {
 
 model List {
   id        String      @id @default(auto()) @map("_id") @db.ObjectId
+  shortId   String      @unique()
   name      String
   groups    ListGroup[]
   items     ListItem[]
@@ -70,6 +71,7 @@ model List {
 
 model ListGroup {
   id        String     @id @default(auto()) @map("_id") @db.ObjectId
+  shortId   String     @unique
   name      String
   order     Int
   listId    String     @db.ObjectId
@@ -83,11 +85,11 @@ model ListGroup {
 
 model ListItem {
   id        String         @id @default(auto()) @map("_id") @db.ObjectId
+  shortId   String         @unique
   name      String
   order     Int
   count     Int
-  stateId   String?        @db.ObjectId
-  state     ListItemState? @relation(fields: [stateId], references: [id], onDelete: Cascade)
+  state     ListItemState?
   groupId   String?        @db.ObjectId
   group     ListGroup?     @relation(fields: [groupId], references: [id], onDelete: Cascade)
   listId    String?        @db.ObjectId
@@ -99,11 +101,12 @@ model ListItem {
 }
 
 model ListItemState {
-  id              String     @id @default(auto()) @map("_id") @db.ObjectId
-  ListItem        ListItem[]
-  state           Int        @default(0)
-  changedByUserId String     @db.ObjectId
-  changedBy       User       @relation(fields: [changedByUserId], references: [id], onDelete: Cascade)
-  createdAt       DateTime   @default(now())
-  updatedAt       DateTime   @default(now())
+  id              String   @id @default(auto()) @map("_id") @db.ObjectId
+  itemId          String   @unique @db.ObjectId
+  item            ListItem @relation(fields: [itemId], references: [id], onDelete: Cascade)
+  state           Int      @default(0)
+  changedByUserId String   @db.ObjectId
+  changedBy       User     @relation(fields: [changedByUserId], references: [id], onDelete: Cascade)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @default(now())
 }

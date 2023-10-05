@@ -29,7 +29,7 @@
 		</div>
 		{#if itemCount}
 			<div class="text-xs">
-				{itemCount} Elemente
+				{itemCount} Aufgabe{itemCount === 1 ? '' : 'n'}
 			</div>
 		{/if}
 	</div>

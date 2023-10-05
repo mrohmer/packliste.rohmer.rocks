@@ -4,8 +4,8 @@ import type {
 	ListWithItemsAndGroupsAndState
 } from '$lib/model/db-types-with-includes';
 
-type Count = Record<'total' | 'done', number>;
-type Progress = Count & Record<'percentage', number>;
+export type Count = Record<'total' | 'done', number>;
+export type Progress = Count & Record<'percentage', number>;
 const createEmptyCount = (): Count => ({ total: 0, done: 0 });
 const sumCounts = (counts: Count[] | undefined) => {
 	if (!counts?.length) {

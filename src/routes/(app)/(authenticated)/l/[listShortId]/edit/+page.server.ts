@@ -80,7 +80,7 @@ export const actions: Actions = {
 			(items?.length ?? 0) + (groups?.reduce((p, c) => p + (c.items?.length ?? 0), 0) ?? 0);
 
 		if (!itemsCount) {
-			setError(form, 'Liste muss mindestens ein Element enthalten');
+			setError(form, 'Liste muss mindestens eine Aufgabe enthalten');
 			return fail(409, { form });
 		}
 

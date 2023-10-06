@@ -9,7 +9,7 @@
 			return;
 		}
 		joining = true;
-		await goto(`/l/invitation/${value}`);
+		await goto(`/l/join/${value}`);
 	};
 
 	$: value?.trim?.().length === 5 && handleSubmit();

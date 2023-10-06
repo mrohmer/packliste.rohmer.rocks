@@ -47,7 +47,7 @@
 				{#if data.error?.code === 'LIST_OWNER'}
 					<a href="/l/{data.list.shortId}" class="btn btn-primary mt-10"> Zur Liste </a>
 				{:else}
-					<a href="/l/invitation" class="btn btn-primary mt-10"> Anderen Code eingeben </a>
+					<a href="/l/join" class="btn btn-primary mt-10"> Anderen Code eingeben </a>
 				{/if}
 			{:else}
 				<p class="py-6">Einladung zu</p>

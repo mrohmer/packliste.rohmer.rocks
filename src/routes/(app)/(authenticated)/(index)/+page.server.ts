@@ -1,13 +1,24 @@
-import type { PageLoad } from './$types';
+import type { PageServerLoad } from './$types';
 import type { ContentList } from '$lib/model/content-list';
 import { getUserId } from '$lib/server/api/get-user-id';
 import { prisma } from '$lib/server/db';
 
-export const load: PageLoad = async ({ fetch, locals }) => {
+export const load: PageServerLoad = async ({ fetch, locals }) => {
 	const userId = await getUserId(locals);
 	return {
 		lists: prisma.list.findMany({
-			where: { userId },
+			where: {
+				OR: [
+					{ userId },
+					{
+						shares: {
+							some: {
+								sharedWithUserId: userId
+							}
+						}
+					}
+				]
+			},
 			include: {
 				items: {
 					include: {
@@ -19,6 +30,27 @@ export const load: PageLoad = async ({ fetch, locals }) => {
 						items: {
 							include: {
 								state: true
+							}
+						}
+					}
+				},
+				user: {
+					select: {
+						id: true,
+						name: true
+					}
+				},
+				shares: {
+					where: {
+						NOT: {
+							sharedWithUserId: userId
+						}
+					},
+					include: {
+						sharedWith: {
+							select: {
+								id: true,
+								name: true
 							}
 						}
 					}

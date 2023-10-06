@@ -38,7 +38,11 @@ const schema = z.object({
 });
 
 export const load: PageServerLoad = async ({ parent }) => {
-	const { list } = await parent();
+	const { list, permissions } = await parent();
+
+	if (!permissions.canEdit) {
+		throw error(403);
+	}
 
 	return {
 		list,
@@ -54,10 +58,28 @@ export const actions: Actions = {
 
 		const userId = await getUserId(locals);
 
-		const list = await prisma.list.findUnique({
+		const list = await prisma.list.findFirst({
 			where: {
-				shortId: params.listShortId,
-				userId
+				AND: [
+					{
+						shortId: params.listShortId
+					},
+					{
+						OR: [
+							{ userId },
+							{
+								shares: {
+									some: {
+										sharedWithUserId: userId,
+										role: {
+											in: ['OWNER', 'EDIT']
+										}
+									}
+								}
+							}
+						]
+					}
+				]
 			}
 		});
 
@@ -84,7 +106,7 @@ export const actions: Actions = {
 			return fail(409, { form });
 		}
 
-		const update = createUpdateRequest(params.listShortId, userId, name, items, groups);
+		const update = createUpdateRequest(params.listShortId, name, items, groups);
 		await prisma.list.update(update);
 
 		throw redirect(303, `/l/${params.listShortId}`);
@@ -140,14 +162,12 @@ const createUpsertGroupRequest = (group: z.infer<typeof groupSchema>, index: num
 });
 const createUpdateRequest = (
 	shortId: string,
-	userId: string,
 	name: string,
 	items?: z.infer<typeof itemsSchema>,
 	groups?: z.infer<typeof groupsSchema>
 ) => ({
 	where: {
-		shortId,
-		userId
+		shortId
 	},
 	data: {
 		name,

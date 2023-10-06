@@ -7,7 +7,7 @@
 
 	export let data: PageData;
 
-	$: isListPage = $page?.route?.id?.includes('/l/[listShortId]/(page)');
+	$: isListPage = $page?.route?.id?.includes('/l/[listShortId]/(owner)/(page)');
 </script>
 
 {#if isListPage}

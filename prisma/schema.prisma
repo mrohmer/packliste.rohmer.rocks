@@ -35,16 +35,17 @@ model Session {
 }
 
 model User {
-  id            String          @id @default(auto()) @map("_id") @db.ObjectId
-  name          String?
-  code          String?         @unique
-  email         String?         @unique
-  emailVerified DateTime?
-  image         String?
-  accounts      Account[]
-  sessions      Session[]
-  lists         List[]
-  ListItemState ListItemState[]
+  id                      String          @id @default(auto()) @map("_id") @db.ObjectId
+  name                    String?
+  code                    String?
+  email                   String?         @unique
+  emailVerified           DateTime?
+  image                   String?
+  accounts                Account[]
+  sessions                Session[]
+  lists                   List[]
+  latelyChangedItemStates ListItemState[]
+  sharedLists             ListShare[]
 }
 
 model VerificationToken {
@@ -56,15 +57,17 @@ model VerificationToken {
 }
 
 model List {
-  id        String      @id @default(auto()) @map("_id") @db.ObjectId
-  shortId   String      @unique()
-  name      String
-  groups    ListGroup[]
-  items     ListItem[]
-  userId    String      @db.ObjectId
-  user      User        @relation(fields: [userId], references: [id], onDelete: Cascade)
-  createdAt DateTime    @default(now())
-  updatedAt DateTime    @default(now())
+  id         String       @id @default(auto()) @map("_id") @db.ObjectId
+  shortId    String       @unique()
+  name       String
+  groups     ListGroup[]
+  items      ListItem[]
+  userId     String       @db.ObjectId
+  user       User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt  DateTime     @default(now())
+  updatedAt  DateTime     @default(now())
+  shares     ListShare[]
+  ListInvite ListInvite[]
 
   @@unique([name, userId])
 }
@@ -109,4 +112,32 @@ model ListItemState {
   changedBy       User     @relation(fields: [changedByUserId], references: [id], onDelete: Cascade)
   createdAt       DateTime @default(now())
   updatedAt       DateTime @default(now())
+}
+
+model ListInvite {
+  id     String    @id @default(auto()) @map("_id") @db.ObjectId
+  listId String    @db.ObjectId
+  list   List      @relation(fields: [listId], references: [id], onDelete: Cascade)
+  role   ShareRole @default(EDIT)
+  code   String    @unique
+
+  @@unique([listId, role])
+}
+
+model ListShare {
+  id               String    @id @default(auto()) @map("_id") @db.ObjectId
+  listId           String    @db.ObjectId
+  list             List?     @relation(fields: [listId], references: [id], onDelete: Cascade)
+  sharedWithUserId String    @db.ObjectId
+  sharedWith       User      @relation(fields: [sharedWithUserId], references: [id], onDelete: Cascade)
+  role             ShareRole @default(EDIT)
+
+  @@unique([listId, sharedWithUserId])
+}
+
+enum ShareRole {
+  SEE
+  CHECK
+  EDIT
+  OWNER
 }

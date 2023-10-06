@@ -11,7 +11,7 @@
 	<Content>
 		<div class="flex flex-col gap-4">
 			{#if data.list.items?.length}
-				<List items={data.list.items} />
+				<List items={data.list.items} disabled={!data.permissions.canCheck} />
 			{/if}
 
 			{#if data.list.groups?.length}

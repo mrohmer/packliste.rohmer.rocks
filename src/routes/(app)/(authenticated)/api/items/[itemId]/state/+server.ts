@@ -12,20 +12,31 @@ export const PATCH: RequestHandler = async ({ params, locals, request }) => {
 
 	const userId = await getUserId(locals);
 
+	const listParams = {
+		OR: [
+			{ userId },
+			{
+				shares: {
+					some: {
+						sharedWithUserId: userId,
+						role: {
+							in: ['OWNER', 'EDIT', 'CHECK']
+						}
+					}
+				}
+			}
+		]
+	};
 	const item = await prisma.listItem.findUnique({
 		where: {
 			id: params.itemId,
 			OR: [
 				{
-					list: {
-						userId
-					}
+					list: listParams
 				},
 				{
 					group: {
-						list: {
-							userId
-						}
+						list: listParams
 					}
 				}
 			]

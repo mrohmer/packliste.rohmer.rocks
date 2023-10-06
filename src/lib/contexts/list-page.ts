@@ -36,7 +36,7 @@ const onChangeHandler =
 		onChange?.();
 
 		try {
-			await fetch(`/api/items/${id}/state`, {
+			const response = await fetch(`/api/items/${id}/state`, {
 				method: 'PATCH',
 				body: JSON.stringify([
 					{
@@ -45,9 +45,15 @@ const onChangeHandler =
 					}
 				])
 			});
+			if (!response.ok || response.status !== 200) {
+				throw new Error(await response.text());
+			}
 		} catch (e) {
 			console.error(e);
+			console.log('revert');
 			item.state.state = oldValue;
+			update?.(item.state.state);
+			onChange?.();
 		}
 	};
 

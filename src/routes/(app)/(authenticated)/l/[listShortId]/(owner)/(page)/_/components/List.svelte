@@ -4,6 +4,7 @@
 	import { calcProgressInItems } from '$lib/utils/progress';
 
 	export let items: ListItem[];
+	export let disabled = false;
 	let changes = 0;
 
 	$: progress = changes >= 0 && calcProgressInItems(items);
@@ -12,7 +13,7 @@
 <div class="flex flex-col gap-2 pt-5">
 	{#each items as item (item.id)}
 		<div>
-			<Item {...item} on:update={() => changes++} />
+			<Item {...item} on:update={() => changes++} {disabled} />
 		</div>
 	{/each}
 	<div class="flex flex-row-reverse px-3 pt-2">

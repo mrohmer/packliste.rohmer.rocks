@@ -1,23 +1,16 @@
 <script lang="ts">
 	import type { User } from '@auth/core/types';
+	import Avatar from '$lib/components/Avatar.svelte';
 
 	export let user: Pick<User, 'name'>;
-
-	$: initials = user?.name
-		?.split(' ')
-		.filter(Boolean)
-		.map((i) => i.charAt(0).toUpperCase())
-		.join('');
 </script>
 
-<div class="navbar bg-base-100 w-full max-w-2xl px-2 mx-auto">
+<div class="navbar bg-base-100 w-full max-w-2xl px-2 py-1 mx-auto z-10">
 	<slot />
 	<div class="flex-none">
 		<div class="dropdown dropdown-end">
 			<button tabindex="0" class="btn btn-ghost btn-circle avatar placeholder">
-				<div class="bg-neutral-focus text-neutral-content rounded-full w-10">
-					<span class="text-lg">{initials}</span>
-				</div>
+				<Avatar username={user?.name} />
 			</button>
 			<!-- eslint-disable-next-line svelte/valid-compile -->
 			<ul

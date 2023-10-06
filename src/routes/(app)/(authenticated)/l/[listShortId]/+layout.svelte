@@ -7,6 +7,7 @@
 	import Logo from '$lib/components/Logo.svelte';
 	import Drawer from './_/components/Drawer.svelte';
 	import Navigation from './_/components/navigation/Navigation.svelte';
+	import Content from '$lib/components/Content.svelte';
 
 	export let data: PageData;
 
@@ -46,6 +47,8 @@
 </Navbar>
 
 <Drawer bind:open={drawerOpen}>
-	<slot />
-	<Navigation slot="sidebar" {changes} list={data.list} />
+	<Content>
+		<slot />
+	</Content>
+	<Navigation slot="sidebar" {changes} list={data.list} {...data.permissions} />
 </Drawer>

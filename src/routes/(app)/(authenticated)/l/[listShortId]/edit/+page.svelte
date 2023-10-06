@@ -14,6 +14,6 @@
 	export const snapshot = { capture, restore };
 </script>
 
-<div class="flex flex-col gap-2">
+<div class="flex flex-col gap-2 pt-3">
 	<ListForm {form} {enhance} />
 </div>

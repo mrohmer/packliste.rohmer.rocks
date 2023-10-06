@@ -50,7 +50,6 @@ const onChangeHandler =
 			}
 		} catch (e) {
 			console.error(e);
-			console.log('revert');
 			item.state.state = oldValue;
 			update?.(item.state.state);
 			onChange?.();

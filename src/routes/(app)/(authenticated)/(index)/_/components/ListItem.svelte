@@ -8,8 +8,6 @@
 	export let href: string;
 	export let users: UsersPerListResult | undefined;
 	export let count: Partial<Count>;
-
-	$: console.log(users);
 </script>
 
 <a

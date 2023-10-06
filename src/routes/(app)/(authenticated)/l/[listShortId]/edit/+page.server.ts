@@ -91,7 +91,6 @@ export const actions: Actions = {
 
 		// Convenient validation check:
 		if (!form.valid) {
-			console.log('invalid', JSON.stringify(form.errors));
 			// Again, always return { form } and things will just work.
 			return fail(400, { form });
 		}

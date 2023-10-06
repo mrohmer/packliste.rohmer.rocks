@@ -3,12 +3,9 @@
 	import ListItem from './_/components/ListItem.svelte';
 	import ListList from './_/components/ListList.svelte';
 	import { calcProgressInList } from '$lib/utils/progress';
-	import { browser } from '$app/environment';
 	import { getUsersPerList } from '$lib/utils/shares';
 
 	export let data: PageData;
-
-	$: browser && console.log(data);
 </script>
 
 <div class="flex flex-col gap-2">

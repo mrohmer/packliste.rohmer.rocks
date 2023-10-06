@@ -75,7 +75,6 @@ export const load: PageLoad = async ({ fetch, params }) => {
 export const actions: Actions = {
 	default: async ({ request, locals }) => {
 		const form = await superValidate(request, schema);
-		console.log('POST', form);
 
 		// Convenient validation check:
 		if (!form.valid) {

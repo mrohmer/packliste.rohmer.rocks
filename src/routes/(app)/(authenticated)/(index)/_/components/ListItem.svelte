@@ -37,7 +37,7 @@
 			<slot />
 		</div>
 		{#if count?.total}
-			<div class="text-xs">
+			<div class="text-xs font-light">
 				{#if count.done}
 					<span class="text-primary">{count.done}</span> /
 				{/if}
@@ -48,17 +48,19 @@
 	{#if users}
 		{#if users.owner}
 			<Users prefix="von">
-				<Avatar username={users.owner.name} />
+				<div class="avatar-group -space-x-6">
+					<Avatar username={users.owner.name} small />
+				</div>
 			</Users>
 		{/if}
 		{#if users.shares?.length}
 			<Users prefix="mit">
 				<div class="avatar-group -space-x-6">
 					{#each users.shares.slice(0, 3) as { id, name } (id)}
-						<Avatar username={name} />
+						<Avatar username={name} small />
 					{/each}
 					{#if users.shares.length > 3}
-						<AvatarPlaceholder>
+						<AvatarPlaceholder small>
 							+{users.length - 3}
 						</AvatarPlaceholder>
 					{/if}

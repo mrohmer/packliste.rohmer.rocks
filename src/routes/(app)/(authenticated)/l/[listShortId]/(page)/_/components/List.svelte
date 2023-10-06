@@ -16,7 +16,7 @@
 			<Item {...item} on:update={() => changes++} {disabled} />
 		</div>
 	{/each}
-	<div class="flex flex-row-reverse px-3 pt-2">
+	<div class="flex flex-row-reverse px-3 pt-2 font-extralight">
 		<div class="w-20 text-center text-xs text-neutral-500">
 			{progress.done} / {progress.total}
 		</div>

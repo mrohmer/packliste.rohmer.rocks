@@ -2,6 +2,7 @@
 	import AvatarPlaceholder from '$lib/components/avatar/AvatarPlaceholder.svelte';
 
 	export let username: string;
+	export let small = false;
 	$: initials = username
 		?.split(' ')
 		.filter(Boolean)
@@ -10,7 +11,7 @@
 </script>
 
 {#if initials?.length}
-	<AvatarPlaceholder title={username}>
+	<AvatarPlaceholder title={username} {small}>
 		{initials ?? ''}
 	</AvatarPlaceholder>
 {/if}

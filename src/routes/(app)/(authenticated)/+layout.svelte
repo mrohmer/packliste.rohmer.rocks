@@ -1,7 +1,6 @@
 <script lang="ts">
 	import type { LayoutData } from './$types';
 	import Navbar from '$lib/components/Navbar.svelte';
-	import Content from '$lib/components/Content.svelte';
 	import { page } from '$app/stores';
 	import Logo from '$lib/components/Logo.svelte';
 
@@ -19,7 +18,5 @@
 		</a>
 	</Navbar>
 
-	<Content>
-		<slot />
-	</Content>
+	<slot />
 {/if}

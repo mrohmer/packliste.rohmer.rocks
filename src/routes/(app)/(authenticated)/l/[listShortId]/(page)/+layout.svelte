@@ -2,11 +2,11 @@
 	import type { PageData } from './$types';
 	import { ListPageContext } from '$lib/contexts/list-page';
 	import Navbar from '$lib/components/Navbar.svelte';
-	import { page } from '$app/stores';
-	import { fly } from 'svelte/transition';
 	import { calcProgressInList } from '$lib/utils/progress';
 	import Progress from './_/components/Progress.svelte';
 	import Logo from '$lib/components/Logo.svelte';
+	import Drawer from './_/components/Drawer.svelte';
+	import Navigation from './_/components/navigation/Navigation.svelte';
 
 	export let data: PageData;
 
@@ -15,46 +15,37 @@
 		changes++;
 	});
 
-	$: isGroupPage = !!$page?.data?.group?.id;
-	$: backLink = isGroupPage ? `/l/${data.list.shortId}` : '/';
-	$: title = isGroupPage ? `Gruppe ${$page?.data?.group?.name}` : data.list.name;
+	let drawerOpen = false;
 
 	$: listProgress = changes >= 0 && calcProgressInList(data.list);
 </script>
 
 <Progress percentage={listProgress.percentage} />
-<Navbar user={data?.user}>
-	<a href={backLink} class="block p-3 -ml-3 flex gap-2">
-		<svg
-			xmlns="http://www.w3.org/2000/svg"
-			fill="none"
-			viewBox="0 0 24 24"
-			stroke-width="1.5"
-			stroke="currentColor"
-			class="w-6 h-6"
-		>
-			<path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
-		</svg>
-		<div>
-			<Logo withName={false} />
-		</div>
-	</a>
-	<div class="flex-1 flex flex-col items-start">
-		<div class="text-2xl leading-8">
-			{title}
-		</div>
-		<div class="text-xs -mt-px">
-			<span class="text-primary">{listProgress.done}</span> / {listProgress.total} Aufgaben
-			{#if isGroupPage}
-				<span transition:fly>
-					| aus Liste
-					<a href="/l/{data.list?.shortId}" class="text-secondary">
-						{data.list?.name}
-					</a>
-				</span>
-			{/if}
-		</div>
+<Navbar user={data?.user} wide>
+	<div class="flex-1 flex gap-3 items-center">
+		<button class="lg:hidden" on:click={() => (drawerOpen = !drawerOpen)}>
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				fill="none"
+				viewBox="0 0 24 24"
+				stroke-width="1.5"
+				stroke="currentColor"
+				class="w-8 h-8"
+			>
+				<path
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+				/>
+			</svg>
+		</button>
+		<a href="/" class="flex-1 pt-3 pb-5">
+			<Logo />
+		</a>
 	</div>
 </Navbar>
 
-<slot />
+<Drawer bind:open={drawerOpen}>
+	<slot />
+	<Navigation slot="sidebar" {changes} list={data.list} />
+</Drawer>

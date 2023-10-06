@@ -15,7 +15,7 @@
 			{/if}
 
 			{#if data.list.groups?.length}
-				<div class="mt-4 flex flex-col gap-4">
+				<div class="pt-4 flex flex-col gap-4">
 					{#each data.list.groups as group (group.id)}
 						<GroupLink {group} listId={data.list.shortId} />
 					{/each}

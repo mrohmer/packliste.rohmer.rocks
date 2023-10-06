@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { ListGroupWithItemsAndState } from '$lib/model/db-types-with-includes';
 	import { calcProgressInGroup } from '$lib/utils/progress';
+	import ProgressBar from './ProgressBar.svelte';
 
 	export let listId: string;
 	export let group: ListGroupWithItemsAndState;
@@ -9,9 +10,10 @@
 
 <a
 	href="/l/{listId}/g/{group.shortId}"
-	class="flex items-center gap-4 py-3 px-5 bg-neutral-200 hover:bg-neutral-300 cursor-pointer rounded-xl"
+	class="flex items-center gap-4 py-3 px-5 bg-neutral-200 hover:bg-neutral-300 cursor-pointer rounded-xl overflow-hidden"
 >
-	<div>
+	<ProgressBar percentage={progress.percentage} condensed />
+	<div class="z-10">
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
 			fill="none"

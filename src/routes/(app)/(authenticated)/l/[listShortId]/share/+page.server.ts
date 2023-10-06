@@ -12,6 +12,11 @@ export const load: PageServerLoad = async ({ parent, depends }) => {
 	depends(`list:${list.id}:invitations`);
 
 	return {
+		listOwner: prisma.user.findUnique({
+			where: {
+				id: list.userId
+			}
+		}),
 		invitations: prisma.listInvite.findMany({
 			where: {
 				listId: list.id

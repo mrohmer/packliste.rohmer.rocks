@@ -33,6 +33,7 @@
 			{/if}
 			<div class="divider my-1 h-px" />
 			<a href="/l/add" class="btn"> Neue Liste anlegen </a>
+			<a href="/l/invitation" class="btn"> Liste beitreten </a>
 			<div class="min-h-16">
 				{#await data?.streamed?.templates}
 					<div class="h-16 w-full flex items-center justify-center absolute left-0 right-0 top-0">

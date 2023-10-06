@@ -1,11 +1,11 @@
 <script lang="ts">
-	import type { PageData } from './$types';
+	import type { LayoutData } from './$types';
 	import Navbar from '$lib/components/Navbar.svelte';
 	import Content from '$lib/components/Content.svelte';
 	import { page } from '$app/stores';
 	import Logo from '$lib/components/Logo.svelte';
 
-	export let data: PageData;
+	export let data: LayoutData;
 
 	$: isListPage = $page?.route?.id?.includes('/l/[listShortId]/(owner)/(page)');
 </script>

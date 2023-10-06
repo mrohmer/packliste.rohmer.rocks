@@ -4,15 +4,12 @@ import { prisma } from '$lib/server/db';
 import { getUserId } from '$lib/server/api/get-user-id';
 
 export const load: PageServerLoad = async ({ params, locals }) => {
-	if (!params.listShortId?.length || !params.code?.length) {
+	if (!params.code?.length) {
 		throw error(404);
 	}
 
 	const invite = await prisma.listInvite.findUnique({
 		where: {
-			list: {
-				shortId: params.listShortId
-			},
 			code: params.code
 		},
 		include: {
@@ -30,7 +27,11 @@ export const load: PageServerLoad = async ({ params, locals }) => {
 	});
 
 	if (!invite?.list) {
-		throw error(404);
+		return {
+			error: {
+				code: 'NOT_FOUND'
+			}
+		};
 	}
 
 	const userId = await getUserId(locals);

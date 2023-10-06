@@ -1,12 +1,15 @@
 import type { LayoutServerLoad } from './$types';
+import type { User } from '@prisma/client';
+import { getUser } from '$lib/server/api/get-user';
 
-export const load: LayoutServerLoad = async (event) => ({
-	user: event.locals.getSession().then((session) =>
-		session?.user
-			? {
-					name: session.user.name,
-					id: session.user.id
-			  }
-			: undefined
-	)
+const getTruncatedUser = async (locals: App.Locals): Promise<Pick<User, 'id' | 'name'>> => {
+	const user = await getUser(locals);
+
+	return {
+		id: user.id,
+		name: user.name
+	};
+};
+export const load: LayoutServerLoad = async ({ locals }) => ({
+	user: getTruncatedUser(locals)
 });

@@ -2,6 +2,7 @@
 	import type { PageData } from './$types';
 	import ListItem from './_/components/ListItem.svelte';
 	import ListList from './_/components/ListList.svelte';
+	import { calcProgressInList } from '$lib/utils/progress';
 
 	export let data: PageData;
 </script>
@@ -13,8 +14,8 @@
 		<div class="flex flex-col gap-4">
 			{#if data?.lists?.length}
 				<ListList count={data.lists.length}>
-					{#each data.lists as { shortId, name } (shortId)}
-						<ListItem href="/l/{shortId}">
+					{#each data.lists as { shortId, name, ...list } (shortId)}
+						<ListItem href="/l/{shortId}" count={calcProgressInList(list)}>
 							{name}
 						</ListItem>
 					{/each}
@@ -37,7 +38,9 @@
 								{#each templates as { label, groups, key, path } (key)}
 									<ListItem
 										href="/l/add/{path}"
-										itemCount={groups?.reduce((prev, curr) => prev + (curr?.items?.length ?? 0), 0)}
+										count={{
+											total: groups?.reduce((prev, curr) => prev + (curr?.items?.length ?? 0), 0)
+										}}
 									>
 										{label}
 									</ListItem>

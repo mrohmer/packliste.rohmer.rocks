@@ -7,7 +7,23 @@ export const load: PageLoad = async ({ fetch, locals }) => {
 	const userId = await getUserId(locals);
 	return {
 		lists: prisma.list.findMany({
-			where: { userId }
+			where: { userId },
+			include: {
+				items: {
+					include: {
+						state: true
+					}
+				},
+				groups: {
+					include: {
+						items: {
+							include: {
+								state: true
+							}
+						}
+					}
+				}
+			}
 		}),
 		streamed: {
 			templates: fetch('/api/templates').then((r: Response) => r.json() as Promise<ContentList[]>)

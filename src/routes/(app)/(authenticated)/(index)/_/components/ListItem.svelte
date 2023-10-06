@@ -1,6 +1,8 @@
 <script lang="ts">
+	import type { Count } from '$lib/utils/progress';
+
 	export let href: string;
-	export let itemCount: number | undefined;
+	export let count: Partial<Count>;
 </script>
 
 <a
@@ -27,9 +29,12 @@
 		<div class="leading-4">
 			<slot />
 		</div>
-		{#if itemCount}
+		{#if count?.total}
 			<div class="text-xs">
-				{itemCount} Aufgabe{itemCount === 1 ? '' : 'n'}
+				{#if count.done}
+					<span class="text-primary">{count.done}</span> /
+				{/if}
+				{count.total} Aufgabe{count.total === 1 ? '' : 'n'}
 			</div>
 		{/if}
 	</div>

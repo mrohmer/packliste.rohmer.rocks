@@ -11,7 +11,7 @@
 	<div class="drawer-content">
 		<slot />
 	</div>
-	<div class="drawer-side">
+	<div class="drawer-side z-20">
 		<label for="my-drawer-2" aria-label="close sidebar" class="drawer-overlay" />
 		<ul class="menu w-80 min-h-full bg-base-100 md:bg-base-200/20 md:border-r text-base-content">
 			<slot name="sidebar" />

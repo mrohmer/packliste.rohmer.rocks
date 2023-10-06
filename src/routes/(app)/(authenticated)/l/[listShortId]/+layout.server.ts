@@ -84,7 +84,8 @@ export const load: LayoutServerLoad = async ({ params, locals }) => {
 		permissions: {
 			canCheck: isOwner || ['OWNER', 'EDIT', 'CHECK'].includes(share!.role),
 			canEdit: isOwner || ['OWNER', 'EDIT'].includes(share!.role),
-			canEditPermissions: isOwner || ['OWNER'].includes(share!.role)
+			canEditPermissions: isOwner || ['OWNER'].includes(share!.role),
+			canDelete: isOwner || ['OWNER'].includes(share!.role)
 		}
 	};
 };

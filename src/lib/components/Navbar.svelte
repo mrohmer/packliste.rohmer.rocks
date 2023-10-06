@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { User } from '@auth/core/types';
-	import Avatar from '$lib/components/Avatar.svelte';
+	import Avatar from '$lib/components/avatar/Avatar.svelte';
 
 	export let user: Pick<User, 'name'>;
 </script>
@@ -9,7 +9,7 @@
 	<slot />
 	<div class="flex-none">
 		<div class="dropdown dropdown-end">
-			<button tabindex="0" class="btn btn-ghost btn-circle avatar placeholder">
+			<button tabindex="0" class="btn btn-ghost btn-circle">
 				<Avatar username={user?.name} />
 			</button>
 			<!-- eslint-disable-next-line svelte/valid-compile -->

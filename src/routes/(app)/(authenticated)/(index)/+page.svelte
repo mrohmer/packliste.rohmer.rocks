@@ -4,6 +4,7 @@
 	import ListList from './_/components/ListList.svelte';
 	import { calcProgressInList } from '$lib/utils/progress';
 	import { browser } from '$app/environment';
+	import { getUsersPerList } from '$lib/utils/shares';
 
 	export let data: PageData;
 
@@ -18,7 +19,11 @@
 			{#if data?.lists?.length}
 				<ListList count={data.lists.length}>
 					{#each data.lists as { shortId, name, ...list } (shortId)}
-						<ListItem href="/l/{shortId}" count={calcProgressInList(list)}>
+						<ListItem
+							href="/l/{shortId}"
+							count={calcProgressInList(list)}
+							users={getUsersPerList(list, data.user)}
+						>
 							{name}
 						</ListItem>
 					{/each}

@@ -41,11 +41,6 @@ export const load: PageServerLoad = async ({ fetch, locals }) => {
 					}
 				},
 				shares: {
-					where: {
-						NOT: {
-							sharedWithUserId: userId
-						}
-					},
 					include: {
 						sharedWith: {
 							select: {

@@ -1,8 +1,15 @@
 <script lang="ts">
 	import type { Count } from '$lib/utils/progress';
+	import Avatar from '$lib/components/avatar/Avatar.svelte';
+	import AvatarPlaceholder from '$lib/components/avatar/AvatarPlaceholder.svelte';
+	import type { UsersPerListResult } from '$lib/utils/shares';
+	import Users from './Users.svelte';
 
 	export let href: string;
+	export let users: UsersPerListResult | undefined;
 	export let count: Partial<Count>;
+
+	$: console.log(users);
 </script>
 
 <a
@@ -25,7 +32,7 @@
 			/>
 		</svg>
 	</div>
-	<div>
+	<div class="flex-1">
 		<div class="leading-4">
 			<slot />
 		</div>
@@ -38,4 +45,25 @@
 			</div>
 		{/if}
 	</div>
+	{#if users}
+		{#if users.owner}
+			<Users prefix="von">
+				<Avatar username={users.owner.name} />
+			</Users>
+		{/if}
+		{#if users.shares?.length}
+			<Users prefix="mit">
+				<div class="avatar-group -space-x-6">
+					{#each users.shares.slice(0, 3) as { id, name } (id)}
+						<Avatar username={name} />
+					{/each}
+					{#if users.shares.length > 3}
+						<AvatarPlaceholder>
+							+{users.length - 3}
+						</AvatarPlaceholder>
+					{/if}
+				</div>
+			</Users>
+		{/if}
+	{/if}
 </a>

@@ -1,4 +1,4 @@
-import type { List, ListGroup, ListItem, ListItemState } from '@prisma/client';
+import type { List, ListGroup, ListItem, ListItemState, ListShare, User } from '@prisma/client';
 
 type PR<Key extends string, Type> = Partial<Record<Key, Type>>;
 export type ListItemWithState = ListItem & PR<'state', ListItemState>;
@@ -10,3 +10,8 @@ export type ListWithItemsAndGroups = List &
 export type ListWithItemsAndGroupsAndState = List &
 	PR<'items', ListItemWithState[]> &
 	PR<'groups', ListGroupWithItemsAndState[]>;
+
+export type ListShareWithUser = ListShare & PR<'sharedWith', User>;
+
+export type ListWithShares = List & PR<'shares', ListShare[]>;
+export type ListWithSharesAndUsers = List & PR<'user', User> & PR<'shares', ListShareWithUser[]>;

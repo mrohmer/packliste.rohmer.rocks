@@ -57,17 +57,17 @@ model VerificationToken {
 }
 
 model List {
-  id         String       @id @default(auto()) @map("_id") @db.ObjectId
-  shortId    String       @unique()
-  name       String
-  groups     ListGroup[]
-  items      ListItem[]
-  userId     String       @db.ObjectId
-  user       User         @relation(fields: [userId], references: [id], onDelete: Cascade)
-  createdAt  DateTime     @default(now())
-  updatedAt  DateTime     @default(now())
-  shares     ListShare[]
-  ListInvite ListInvite[]
+  id        String       @id @default(auto()) @map("_id") @db.ObjectId
+  shortId   String       @unique()
+  name      String
+  groups    ListGroup[]
+  items     ListItem[]
+  userId    String       @db.ObjectId
+  user      User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @default(now())
+  shares    ListShare[]
+  invites   ListInvite[]
 
   @@unique([name, userId])
 }

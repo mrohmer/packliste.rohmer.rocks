@@ -36,7 +36,7 @@
 	$: host = `${$page.url.protocol}//${[$page.url.hostname, $page.url.port]
 		.filter(Boolean)
 		.join(':')}`;
-	$: link = invitation ? `${host}/invite/${invitation.code}` : undefined;
+	$: link = invitation ? `${host}/l/join/${invitation.code}` : undefined;
 	$: qrCode = createQrCode(link);
 </script>
 

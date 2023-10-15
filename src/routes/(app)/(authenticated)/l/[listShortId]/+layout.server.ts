@@ -2,6 +2,7 @@ import type { LayoutServerLoad } from './$types';
 import { prisma } from '$lib/server/db';
 import { error } from '@sveltejs/kit';
 import { getUserId } from '$lib/server/api/get-user-id';
+import { getPermissions } from '$lib/server/utils/permissions';
 
 export const load: LayoutServerLoad = async ({ params, locals }) => {
 	if (!params?.listShortId?.trim()) {
@@ -81,11 +82,8 @@ export const load: LayoutServerLoad = async ({ params, locals }) => {
 
 	return {
 		list,
-		permissions: {
-			canCheck: isOwner || ['OWNER', 'EDIT', 'CHECK'].includes(share!.role),
-			canEdit: isOwner || ['OWNER', 'EDIT'].includes(share!.role),
-			canEditPermissions: isOwner || ['OWNER'].includes(share!.role),
-			canDelete: isOwner || ['OWNER'].includes(share!.role)
-		}
+		isOwner,
+		role: share?.role,
+		permissions: getPermissions(isOwner, share?.role)
 	};
 };

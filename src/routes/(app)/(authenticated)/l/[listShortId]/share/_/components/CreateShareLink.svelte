@@ -2,6 +2,7 @@
 	import type { ShareRole, ListInvite } from '@prisma/client';
 	import { invalidate } from '$app/navigation';
 	import ShareLinkModal from './ShareLinkModal.svelte';
+	import Select from './Select.svelte';
 
 	export let invitations: ListInvite[];
 	export let listId: string;
@@ -41,17 +42,15 @@
 	<h2 class="text-xl">Liste freigeben</h2>
 	<div class="mt-4 flex gap-4 items-end">
 		<div class="flex-1">
-			<div class="form-control w-full">
-				<label class="label" for="role">
-					<span class="label-text">Rolle</span>
-				</label>
-				<select id="role" class="select select-bordered" bind:value={role}>
+			<Select id="role" bind:value={role}>
+				Rolle
+				<svelte:fragment slot="options">
 					<option value="SEE">Nur Ansehen</option>
 					<option value="CHECK">Mitarbeiten</option>
 					<option selected value="EDIT">Bearbeiten</option>
 					<option value="OWNER">Eigentümer</option>
-				</select>
-			</div>
+				</svelte:fragment>
+			</Select>
 		</div>
 		<button class="btn btn-primary" on:click={onCreateShareLink}> Link erzeugen </button>
 	</div>

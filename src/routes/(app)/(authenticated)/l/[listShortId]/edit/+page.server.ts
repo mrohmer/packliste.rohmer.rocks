@@ -105,7 +105,7 @@ export const actions: Actions = {
 			return fail(409, { form });
 		}
 
-		const update = createUpdateRequest(params.listShortId, name, items, groups);
+		const update = createUpdateRequest(list.id, name, items, groups);
 		await prisma.list.update(update);
 
 		throw redirect(303, `/l/${params.listShortId}`);
@@ -126,9 +126,33 @@ const createUpsertItemRequest = (item: z.infer<typeof itemSchema>, index: number
 	update: {
 		order: index * 100,
 		name: item.name!,
-		count: item.count ?? 1
+		count: item.count ?? 1,
+		updatedAt: new Date()
 	}
 });
+const createItemsRequest = <Parent extends Record<string, unknown>>(
+	items: z.infer<typeof itemSchema>[] | undefined,
+	parentSelector: Parent
+) =>
+	objWithItemsOrUndefined({
+		upsert: items?.length
+			? arrayWithItemsOrUndefined(
+					items
+						.map((item, ii) => ({ item, ii }))
+						.filter(({ item }) => !!item.id)
+						.map(({ item, ii }) => createUpsertItemRequest(item, ii))
+			  )
+			: undefined,
+		create: items?.length
+			? arrayWithItemsOrUndefined(
+					items
+						.map((item, ii) => ({ item, ii }))
+						.filter(({ item }) => !item.id)
+						.map(({ item, ii }) => createCreateItemRequest(item, ii))
+			  )
+			: undefined,
+		deleteMany: createDeleteRestRequest(items, parentSelector)
+	});
 
 const createUpsertGroupRequest = (group: z.infer<typeof groupSchema>, index: number) => ({
 	where: {
@@ -145,41 +169,52 @@ const createUpsertGroupRequest = (group: z.infer<typeof groupSchema>, index: num
 	update: {
 		name: group.name!,
 		order: index * 100,
-		items: group.items?.length
-			? {
-					upsert: group.items
-						.map((item, ii) => ({ item, ii }))
-						.filter(({ item }) => !!item.id)
-						.map(({ item, ii }) => createUpsertItemRequest(item, ii)),
-					create: group.items
-						.map((item, ii) => ({ item, ii }))
-						.filter(({ item }) => !item.id)
-						.map(({ item, ii }) => createCreateItemRequest(item, ii))
-			  }
-			: undefined
+		updatedAt: new Date(),
+		items: createItemsRequest(group.items, { groupId: group.id })
 	}
 });
+const arrayWithItemsOrUndefined = <T>(arr: T[] | undefined): T[] | undefined =>
+	arr?.length ? arr : undefined;
+const objWithItemsOrUndefined = <T>(obj: T | undefined): T | undefined =>
+	!!obj && Object.values(obj).some(Boolean) ? obj : undefined;
+const createDeleteRestRequest = <Parent extends Record<string, unknown>>(
+	items: Partial<Record<'id', string | undefined>>[] | undefined,
+	parentSelector: Parent
+) => {
+	const ids = items?.map(({ id }) => id!).filter(Boolean);
+	return {
+		...parentSelector,
+		updatedAt: {
+			lt: new Date()
+		},
+		NOT: ids?.length
+			? {
+					...(parentSelector.NOT ?? {}),
+					id: {
+						in: ids
+					}
+			  }
+			: undefined
+	};
+};
 const createUpdateRequest = (
-	shortId: string,
+	id: string,
 	name: string,
 	items?: z.infer<typeof itemsSchema>,
 	groups?: z.infer<typeof groupsSchema>
 ) => ({
 	where: {
-		shortId
+		id
 	},
 	data: {
 		name,
 		updatedAt: new Date(),
-		items: items?.length
-			? {
-					upsert: items.map((item, ii) => createUpsertItemRequest(item, ii))
-			  }
-			: undefined,
-		groups: groups?.length
-			? {
-					upsert: groups.map((group, gi) => createUpsertGroupRequest(group, gi))
-			  }
-			: undefined
+		items: createItemsRequest(items, { listId: id }),
+		groups: objWithItemsOrUndefined({
+			upsert: arrayWithItemsOrUndefined(
+				groups?.map((group, gi) => createUpsertGroupRequest(group, gi))
+			),
+			deleteMany: createDeleteRestRequest(groups, { listId: id })
+		})
 	}
 });

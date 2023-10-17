@@ -24,7 +24,7 @@
 <Progress percentage={listProgress.percentage} />
 <Navbar user={data?.user} wide>
 	<div class="flex-1 flex gap-3 items-center">
-		<button class="lg:hidden" on:click={() => (drawerOpen = !drawerOpen)}>
+		<button class="md:hidden" on:click={() => (drawerOpen = !drawerOpen)}>
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
 				fill="none"

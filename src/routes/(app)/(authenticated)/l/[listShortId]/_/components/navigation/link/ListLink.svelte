@@ -15,7 +15,7 @@
 </script>
 
 <Link href="/l/{list.shortId}" suppressHighlight>
-	<div class="flex-1 w-full">
+	<div class="flex-1 w-10">
 		<div class="text-xl overflow-hidden text-ellipsis">
 			{list.name ?? 'Liste'}
 		</div>

@@ -36,7 +36,7 @@
 		<div class="flex-1">
 			<div class="max-w-[50%] h-5 bg-base-200 rounded-full" />
 		</div>
-		<div class="w-20 flex justify-center">
+		<div class="w-6 flex justify-center">
 			<div class="w-6 h-6 bg-base-200 rounded-lg" />
 		</div>
 	</div>
@@ -53,7 +53,7 @@
 				<label for="item-{id}" class="flex-1 text-lg strike" class:cursor-not-allowed={disabled}>
 					<span class="strike" class:strike-through={state?.state === count}>{name}</span>
 				</label>
-				<div class="w-20 flex justify-center">
+				<div class="flex w-6">
 					<input
 						id="item-{id}"
 						type="checkbox"

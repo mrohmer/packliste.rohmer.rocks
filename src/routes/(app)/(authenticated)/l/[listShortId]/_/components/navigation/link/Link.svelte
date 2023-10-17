@@ -12,7 +12,7 @@
 
 <a
 	{href}
-	class="lnk flex gap-2 px-3 py-2 items-center min-h-12 rounded-xl transition-colors {klass}"
+	class="lnk flex gap-2 px-3 py-2 items-center min-h-12 rounded-xl transition-colors w-full overflow-hidden text-ellipsis {klass}"
 	class:highlight
 	on:click
 >

@@ -21,7 +21,7 @@
 	};
 </script>
 
-<div class="flex flex-col text-base font-light gap-1">
+<div class="flex flex-col text-base font-light gap-1 w-full">
 	<LinkGroup>
 		<ListLink {list} {changes} />
 	</LinkGroup>

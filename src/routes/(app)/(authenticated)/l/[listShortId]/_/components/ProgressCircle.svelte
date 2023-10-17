@@ -5,7 +5,9 @@
 </script>
 
 <div
-	class="radial-progress text-primary font-light"
+	class="radial-progress font-light"
+	class:text-primary={percentage < 100}
+	class:text-green-500={percentage === 100}
 	style="--value:{percentage}; --size:2rem; --thickness: 1.5px;"
 >
 	<span class="text-center text-base-content"

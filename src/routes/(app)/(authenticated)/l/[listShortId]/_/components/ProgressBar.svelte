@@ -6,8 +6,10 @@
 </script>
 
 <div
-	class="bg-primary h-full absolute left-0 inset-y-0 transition-all"
+	class="h-full absolute left-0 inset-y-0 transition-all"
 	style:width={`${percentage}%`}
 	class:opacity-20={condensed}
 	class:rounded-xl={condensed}
+	class:bg-primary={percentage < 100}
+	class:bg-green-500={percentage === 100}
 />

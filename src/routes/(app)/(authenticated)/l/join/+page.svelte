@@ -20,6 +20,7 @@
 		<div class="max-w-md w-full">
 			<div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-200">
 				<form class="card-body" on:submit|preventDefault={handleSubmit}>
+					<h2 class="card-title">Liste beitreten</h2>
 					<div class="form-control">
 						<label for="code" class="label">
 							<span class="label-text">Code</span>

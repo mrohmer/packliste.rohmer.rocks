@@ -8,7 +8,7 @@ const authorization: Handle = async ({ event, resolve }) => {
 		return resolve(event);
 	}
 
-	if (!event.url.pathname.startsWith('/auth')) {
+	if (event.route.id?.includes('/(authenticated)')) {
 		const session = await event.locals.getSession();
 		if (!session) {
 			throw redirect(303, '/auth/login');

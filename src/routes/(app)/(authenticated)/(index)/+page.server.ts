@@ -53,7 +53,7 @@ export const load: PageServerLoad = async ({ fetch, locals }) => {
 			}
 		}),
 		streamed: {
-			templates: fetch('/api/templates').then((r: Response) => r.json() as Promise<ContentList[]>)
+			templates: fetch('/api/templates/all').then((r: Response) => r.json() as Promise<ContentList[]>)
 		}
 	};
 };

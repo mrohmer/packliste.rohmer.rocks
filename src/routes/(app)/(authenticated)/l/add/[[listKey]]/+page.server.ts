@@ -67,7 +67,7 @@ export const load: PageLoad = async ({ fetch, params }) => {
 	return {
 		form: superValidate(data, schema),
 		streamed: {
-			templates: loadApi<ContentList[]>(fetch, '/api/templates')
+			templates: loadApi<ContentList[]>(fetch, '/api/templates/all')
 		}
 	};
 };

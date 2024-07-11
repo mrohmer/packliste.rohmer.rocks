@@ -1,29 +1,29 @@
 {
-  "start_url": "/",
-  "display": "fullscreen",
-  "name": "packliste",
-  "short_name": "Packliste",
-  "scope": "/",
-  "lang": "de",
-  "description": "Digitale packliste",
-  "theme_color": "#4F29F0",
-  "background_color": "#ffffff",
-  "icons": [
-    {
-      "src": "icons/icon_500.png",
-      "sizes": "500x500"
-    },
-    {
-      "src": "icons/icon_250.png",
-      "sizes": "250x250"
-    },
-    {
-      "src": "icons/icon_150.png",
-      "sizes": "150x150"
-    },
-    {
-      "src": "favicon.png",
-      "sizes": "50x50"
-    }
-  ]
+	"start_url": "/",
+	"display": "fullscreen",
+	"name": "packliste",
+	"short_name": "Packliste",
+	"scope": "/",
+	"lang": "de",
+	"description": "Digitale packliste",
+	"theme_color": "#4F29F0",
+	"background_color": "#ffffff",
+	"icons": [
+		{
+			"src": "icons/icon_500.png",
+			"sizes": "500x500"
+		},
+		{
+			"src": "icons/icon_250.png",
+			"sizes": "250x250"
+		},
+		{
+			"src": "icons/icon_150.png",
+			"sizes": "150x150"
+		},
+		{
+			"src": "favicon.png",
+			"sizes": "50x50"
+		}
+	]
 }

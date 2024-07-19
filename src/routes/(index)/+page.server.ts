@@ -1,11 +1,11 @@
-import type {PageLoad} from './$types';
+import type {PageServerLoad} from './$types';
 import {readListFiles} from '$lib/utils/read-content';
 
 export const prerender = true;
 
-export const load: PageLoad = () => {
+export const load: PageServerLoad = () => {
   const lists = readListFiles();
-  
+
   return {
     lists,
   }

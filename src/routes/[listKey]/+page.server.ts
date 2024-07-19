@@ -1,13 +1,13 @@
-import type {PageLoad} from './$types';
+import type {PageServerLoad} from './$types';
 import { error } from '@sveltejs/kit';
 import {readListFile} from '$lib/utils/read-content';
 
 export const prerender = true;
 
-export const load: PageLoad = ({params}) => {
+export const load: PageServerLoad = ({params}) => {
   const {listKey} = params;
 
-  if (!/^[a-z0-9\-]*$/.test(listKey)) {
+  if (!/^[a-z0-9-]*$/.test(listKey)) {
     throw error(404);
   }
 

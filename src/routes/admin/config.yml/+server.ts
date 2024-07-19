@@ -1,9 +1,7 @@
-import type {RequestHandler} from '@sveltejs/kit';
-import {env} from '$env/dynamic/private';
-import {dev} from '$app/environment';
-import {getBackend} from './backend';
-import {getLocalBackend} from './localBackend';
-import {getCollections} from './collections';
+import type { RequestHandler } from '@sveltejs/kit';
+import { getBackend } from './backend';
+import { getLocalBackend } from './localBackend';
+import { getCollections } from './collections';
 
 export const prerender = true;
 

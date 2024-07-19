@@ -589,7 +589,7 @@
         },
         {
           "label": "Diverse Leinen",
-          "key": "div-leinen"
+          "key": "div-leinen-boot"
         },
         {
           "label": "Fischfinder",
@@ -723,7 +723,7 @@
         },
         {
           "label": "Diverse Leinen",
-          "key": "div-leinen"
+          "key": "div-leinen-toolbox"
         },
         {
           "label": "Diverse Kabelbinder",
@@ -859,7 +859,7 @@
       "items": [
         {
           "label": "TÜV gültig",
-          "key": "tuev-gueltig"
+          "key": "tuev-gueltig-auto"
         },
         {
           "label": "Grüne Deckungskate gültig",
@@ -871,7 +871,7 @@
         },
         {
           "label": "Öl überprüfen",
-          "key": "oel-ueberpruefen"
+          "key": "oel-ueberpruefen-auto"
         },
         {
           "label": "Wischwasser auffüllen",
@@ -897,7 +897,7 @@
       "items": [
         {
           "label": "TÜV gültig",
-          "key": "tuev-gueltig"
+          "key": "tuev-gueltig-trailer"
         },
         {
           "label": "Luftdruck überprüfen",
@@ -927,7 +927,7 @@
         },
         {
           "label": "Öl überprüfen",
-          "key": "oel-ueberpruefen"
+          "key": "oel-ueberpruefen-boot"
         },
         {
           "label": "Anoden reinigen / erneuern",

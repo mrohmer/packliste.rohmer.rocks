@@ -4,7 +4,7 @@
   import type {IList} from '$lib/model/list';
   import {liveQuery} from 'dexie';
   import {db} from '$lib/db';
-  import ListLink from "./components/ListLink.svelte";
+  import ListLink from "./_/components/ListLink.svelte";
   import type {PageData} from './$types';
   import Header from "$lib/components/Header.svelte";
 

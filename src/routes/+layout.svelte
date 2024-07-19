@@ -1,13 +1,10 @@
 <script lang="ts">
   import "../app.pcss";
-  import PoweredBy from "@rohmer/svelte-base/PoweredBy.svelte";
-  import {doubleTap} from '$lib/actions/hammer';  import {slide} from 'svelte/transition';
+  import {doubleTap} from '$lib/actions/hammer';
+  import {slide} from 'svelte/transition';
   import {dev} from '$app/environment';
   import ThemeSwitch from "$lib/components/control/ThemeSwitch.svelte";
 
-
-  const name = 'Matthias Rohmer';
-  const url = 'https://matthias.rohmer.rocks';
   const technologies = ['svelte', 'netlify'];
   const sourceCodeUrl = 'https://github.com/mrohmer/packing.rohmer.rocks';
 
@@ -27,8 +24,13 @@
     </div>
 </main>
 <footer class="max-w-4xl mx-auto">
-    <div use:doubleTap on:doubletap={() => showAdminLink = true}>
-        <PoweredBy {name} {url} {technologies} {sourceCodeUrl}/>
+    <div use:doubleTap on:doubletap={() => showAdminLink = true} class="text-center text-sm">
+        <div>
+            Made with ❤, {technologies.join(' & ')} by <a target="_blank" href="https://matthias.rohmer.rocks">Matthias Rohmer</a>
+        </div>
+        <div>
+            View the source code on <a target="_blank" href={sourceCodeUrl}>Github</a>
+        </div>
     </div>
     {#if showAdminLink}
         <div class="flex justify-center my-6 text-neutral-400 text-sm lowercase" transition:slide|local>

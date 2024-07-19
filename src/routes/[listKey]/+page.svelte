@@ -1,6 +1,6 @@
 <script lang="ts">
-  import List from "./components/List.svelte";
-  import BottomSheet from "./components/BottomSheet.svelte";
+  import List from "./_/components/List.svelte";
+  import BottomSheet from "./_/components/BottomSheet.svelte";
   import type {PageData} from './$types';
   import Icon from "$lib/components/control/Icon.svelte";
 

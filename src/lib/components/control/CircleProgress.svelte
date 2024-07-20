@@ -1,6 +1,7 @@
 <script lang="ts">
   export let percentage = 0;
   export let max = 100;
+  export let disabled = false;
   $: progressPath = (): string => {
     if (!percentage || percentage < 0) {
       return "";
@@ -21,7 +22,7 @@
 </script>
 
 
-<div class="h-full w-full">
+<div class="h-full w-full grayscale">
     <svg viewBox="0 0 100 100" class="fill-transparent h-full absolute w-full left-0 right-0">
         <path d="M50,5A45 45 0 1 1 49.9999 5" class="stroke-gray-400 stroke-2"/>
         <path d="{progressPath()}" class="stroke-primary stroke-2"/>

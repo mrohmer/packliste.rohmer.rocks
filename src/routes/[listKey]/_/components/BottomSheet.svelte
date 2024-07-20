@@ -10,6 +10,7 @@
   import {liveQuery} from 'dexie';
 
   export let list: IList;
+  export let disabled = false;
 
   let menuOpen = false;
 
@@ -57,7 +58,7 @@
   }
 </script>
 
-{#if $anyItemsChanged}
+{#if $anyItemsChanged && !disabled}
     <div class="pt-2 fixed left-0 right-0 bottom-0 bg-white border-t border-neutral-100 z-20 dark:bg-zinc-800 dark:border-neutral-400 transition-colors" transition:slide|local>
         <div class="px-2.5 pb-1 flex items-center max-w-4xl mx-auto">
             <div class="h-10 w-10 mr-2.5 text-xs">

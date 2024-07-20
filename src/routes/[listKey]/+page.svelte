@@ -6,6 +6,7 @@
 	import { writable } from 'svelte/store';
 	import { setContext } from 'svelte';
 	import { createContext } from './_/context/list';
+	import Button from '$lib/components/control/Button.svelte';
 
 	let isEdit = writable(false);
 
@@ -23,15 +24,15 @@
 		<h1 class="flex-1 text-2xl">{data.list.label}</h1>
 
 		{#if $isEdit}
-			<button class="btn btn-sm" on:click={isEdit.set(!$isEdit)}>
+			<Button sm on:click={isEdit.set(!$isEdit)}>
 				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
 						 class="size-4 mr-1">
 					<path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
 				</svg>
 				speichern
-			</button>
+			</Button>
 		{:else}
-			<button class="btn btn-sm" on:click={isEdit.set(!$isEdit)}>
+			<Button sm on:click={isEdit.set(!$isEdit)}>
 				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
 						 class="size-4 mr-1">
 					<path stroke-linecap="round" stroke-linejoin="round"
@@ -39,7 +40,7 @@
 
 				</svg>
 				bearbeiten
-			</button>
+			</Button>
 		{/if}
 	</div>
 

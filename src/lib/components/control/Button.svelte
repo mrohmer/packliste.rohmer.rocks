@@ -3,12 +3,22 @@
 
   let klass: string;
   export let disabled = false
-  export let variant: 'button' | 'icon' = 'button'
+  export let variant: 'button' | 'icon' = 'button';
+  export let xs = false;
+  export let sm = false;
+  export let lg = false;
+  export let xl = false;
 
   export {klass as class};
 </script>
 
-<button on:click {disabled} class="bg-transparent border border-neutral-500 rounded px-4 py-2.5 cursor-pointer mr-2.5 mb-2.5 transition-colors hover:bg-gray-100 dark:border-neutral-400 dark:hover:bg-gray-700 {klass}">
+<button on:click {disabled}
+        class="btn dark:bg-zinc-700 dark:text-white {klass}"
+        class:btn-xs={xs}
+        class:btn-sm={sm}
+        class:btn-lg={lg}
+        class:btn-xl={xl}
+>
     {#if variant === 'icon'}
         <Icon>
             <slot/>

@@ -18,7 +18,8 @@
 		{#key key}
 			<div class="flex items-center pr-1">
 				<Checkbox class="checkbox flex-1"
-									checked="{state}"
+									checked={state}
+									disabled={isEdit}
 									on:change
 				>
 					{label}

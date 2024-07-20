@@ -1,17 +1,19 @@
 <script lang="ts">
-  export let checked = false;
-  export let inputId = `checkbox-${(Math.random() * 1000).toFixed(0)}`;
+	export let checked = false;
+	export let inputId = `checkbox-${(Math.random() * 1000).toFixed(0)}`;
+	export let disabled = false;
 
-  let klass: string;
-  export {klass as class};
+	let klass: string;
+	export { klass as class };
 </script>
 
 <style lang="postcss">
     .checkbox {
         grid-template-columns: 30px auto;
     }
+
     .checkbox *::before,
-    .checkbox *::after{
+    .checkbox *::after {
         @apply absolute;
         content: "";
     }
@@ -19,8 +21,9 @@
     label span::before {
         @apply h-0.5 w-2 -left-[27px] bg-primary rounded-sm transition-colors duration-300 top-0 bottom-0 my-auto;
     }
+
     label span::after {
-       @apply h-1 w-1 top-2 -left-[25px] rounded-full;
+        @apply h-1 w-1 top-2 -left-[25px] rounded-full;
     }
 
     input[type="checkbox"]::before,
@@ -142,10 +145,15 @@
     }
 </style>
 
-<div class="checkbox h-10 rounded-lg p-2.5 flex items-center mb-px outline-0 border-none {klass}">
-    <div class="absolute top-0 left-0 right-0 bottom-0 w-full h-full cursor-pointer" on:click={() => checked = !checked}></div>
-    <input id="{inputId}" type="checkbox" value="1" {checked} on:change class="h-4 w-4 border-0 mr-4 cursor-pointer grid items-center outline-[none] appearance-none">
-    <label for="{inputId}" class="text-gray-500 cursor-pointer items-center transition-colors duration-300 flex-1 dark:text-gray-200">
-        <span class="inline-block w-fit pr-1"><slot /></span>
-    </label>
+<div class="checkbox h-10 rounded-lg p-2.5 flex items-center mb-px outline-0 border-none select-none {klass}"
+		 class:pointer-events-none={disabled}
+>
+	<div class="absolute top-0 left-0 right-0 bottom-0 w-full h-full cursor-pointer"
+			 on:click={() => checked = !checked}></div>
+	<input id="{inputId}" type="checkbox" value="1" {checked} on:change
+				 class="h-4 w-4 border-0 mr-4 cursor-pointer grid items-center outline-[none] appearance-none">
+	<label for="{inputId}"
+				 class="text-gray-500 cursor-pointer items-center transition-colors duration-300 flex-1 dark:text-gray-200">
+		<span class="inline-block w-fit pr-1"><slot /></span>
+	</label>
 </div>

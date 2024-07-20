@@ -30,7 +30,9 @@
 								 stroke="currentColor" class="size-4 mr-1">
 							<path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
 						</svg>
-						hinzufügen
+						<span class="hidden sm:inline">
+							hinzufügen
+						</span>
 					</Button>
 				{:else if isEdit}
 					<Button sm on:click={() => dispatcher('remove')}>
@@ -38,7 +40,9 @@
 								 stroke="currentColor" class="size-4 mr-1">
 							<path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14" />
 						</svg>
-						entfernen
+						<span class="hidden sm:inline">
+							entfernen
+						</span>
 					</Button>
 				{/if}
 			</div>

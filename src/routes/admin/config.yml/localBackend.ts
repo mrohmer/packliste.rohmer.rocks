@@ -1,12 +1,12 @@
-import {dev} from '$app/environment';
-import {env} from '$env/dynamic/private';
+import { dev } from '$app/environment';
+import { BACKEND_PORT } from '$env/static/private';
 
 export const getLocalBackend = () => {
-  if (!dev || !env.BACKEND_PORT) {
-    return undefined;
-  }
+	if (!dev || !BACKEND_PORT) {
+		return undefined;
+	}
 
-  return {
-    url: `http://localhost:${env.BACKEND_PORT}/api/v1`
-  };
+	return {
+		url: `http://localhost:${BACKEND_PORT}/api/v1`
+	};
 };

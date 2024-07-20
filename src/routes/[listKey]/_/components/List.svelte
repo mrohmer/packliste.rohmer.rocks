@@ -9,6 +9,7 @@
 	import type { Observable } from 'dexie';
 	import { liveQuery } from 'dexie';
 	import type { ItemState } from '$lib/model/item-state';
+	import { receiveContext } from '../context/list';
 
 	type ItemWithState = IListItem & ItemState;
 	type GroupWithState = Omit<IListGroup, 'items'> & Record<'items', ItemWithState[]>
@@ -16,6 +17,8 @@
 	export let list: IList;
 
 	let groups: Observable<Record<'normal' | 'irrelevant', GroupWithState[]>>;
+
+	const {isEdit} = receiveContext();
 
 	const updateItem = (groupKey: string, itemKey: string, {
 		state,
@@ -111,7 +114,7 @@
 				</div>
 			{/if}
 
-			{#if $groups.irrelevant.length }
+			{#if $groups.irrelevant.length && $isEdit }
 				<div class="opacity-50 mt-24 dark:opacity-80 transition-opacity" transition:slide|local>
 					<h3 class="uppercase text-center text-xl">Entfernt</h3>
 					<ExpansionPanelGroup multipleOpen="{true}">

@@ -25,7 +25,7 @@
 </script>
 
 <a href="/{list.path}">
-    <div class="flex items-center py-4 px-5 rounded-xl hover:bg-neutral-50 hover:bg-neutral-700">
+    <div class="flex items-center py-4 px-5 rounded-xl hover:bg-neutral-50 dark:hover:bg-neutral-700">
         <div class="flex-1">
             <div class="font-semibold">{list.label}</div>
             <div class="text-neutral-500">

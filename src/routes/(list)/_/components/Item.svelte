@@ -20,6 +20,7 @@
 				<Checkbox class="checkbox flex-1"
 									checked={state}
 									disabled={isEdit}
+									inputId="checkbox-{key}"
 									on:change
 				>
 					{label}

@@ -17,7 +17,7 @@
 
 	let groups: Observable<Record<'normal' | 'irrelevant', GroupWithState[]>>;
 
-	const {isEdit} = receiveContext();
+	const { isEdit } = receiveContext();
 
 	const updateItem = (groupKey: string, itemKey: string, {
 		state,
@@ -49,7 +49,7 @@
 	const onChangeItemIrrelevant = (irrelevant: boolean, groupKey: string, itemKey: string) => {
 		console.log(irrelevant, groupKey, itemKey);
 		return updateItem(groupKey, itemKey, { irrelevant });
-	}
+	};
 
 	const buildGroupWithState = async (group: IListGroup): Promise<GroupWithState> => {
 		const itemStates = await db.items.where({ groupKey: group.key, listKey: list.key }).toArray();
@@ -75,7 +75,6 @@
 	let mounted = false;
 	onMount(() => (mounted = true));
 
-
 	$: {
 		if (mounted && list) {
 			groups = liveQuery(async () => {
@@ -92,7 +91,7 @@
 </script>
 
 {#if $groups}
-	<div class="flex flex-col py-2.5">
+	<div class="flex flex-col py-2.5 px-4">
 		<div class="flex-1">
 			{#if $groups.normal.length }
 				<div>

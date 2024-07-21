@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  darkMode: 'class',
+  darkMode: 'selector',
   content: ['./src/**/*.{html,js,svelte,ts}'],
   theme: {
     extend: {
@@ -13,6 +13,6 @@ module.exports = {
     require('daisyui')
   ],
   daisyui: {
-    themes: false,
+    themes: [],
   },
 }

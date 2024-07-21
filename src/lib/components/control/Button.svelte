@@ -1,9 +1,6 @@
 <script lang="ts">
-  import Icon from "./Icon.svelte";
-
   let klass: string;
   export let disabled = false
-  export let variant: 'button' | 'icon' = 'button';
   export let xs = false;
   export let sm = false;
   export let lg = false;
@@ -19,11 +16,5 @@
         class:btn-lg={lg}
         class:btn-xl={xl}
 >
-    {#if variant === 'icon'}
-        <Icon>
-            <slot/>
-        </Icon>
-    {:else}
         <slot/>
-    {/if}
 </button>

@@ -2,7 +2,6 @@
 	import { slide } from 'svelte/transition';
 	import type { IList } from '$lib/model/list';
 	import CircleProgress from '$lib/components/control/CircleProgress.svelte';
-	import Icon from '$lib/components/control/Icon.svelte';
 	import Button from '$lib/components/control/Button.svelte';
 	import { db } from '$lib/db';
 	import { onMount } from 'svelte';
@@ -78,13 +77,20 @@
 			<div
 				class="text-neutral-300 px-2.5 transition-colors cursor-pointer leading-10 hover:text-neutral-500 dark:hover:text-neutral-50"
 				class:hidden={menuOpen} on:click={() => menuOpen = !menuOpen}>
-				<Icon>ellipsis-v</Icon>
+				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+						 class="size-4">
+					<path stroke-linecap="round" stroke-linejoin="round" d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3" />
+				</svg>
 			</div>
 			<div
-				class="text-neutral-300 px-2.5 transition-colors cursor-pointer hover:text-neutral-500 dark:hover:text-neutral-50 -mr-1"
+				class="text-neutral-300 px-2.5 transition-colors cursor-pointer leading-10 hover:text-neutral-500 dark:hover:text-neutral-50"
 				class:hidden={!menuOpen}
 				on:click={() => menuOpen = !menuOpen}>
-				<Icon>times</Icon>
+				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+						 class="size-4">
+					<path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+				</svg>
+
 			</div>
 		</div>
 		{#if menuOpen}

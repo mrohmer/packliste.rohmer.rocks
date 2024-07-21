@@ -1,7 +1,6 @@
 <script lang="ts">
 	import type { IList, IListGroup, IListItem } from '$lib/model/list';
 	import ExpansionPanelGroup from '$lib/components/control/ExpansionPanelGroup.svelte';
-	import Icon from '$lib/components/control/Icon.svelte';
 	import Group from './Group.svelte';
 	import { slide } from 'svelte/transition';
 	import { db } from '$lib/db';
@@ -103,11 +102,7 @@
 								<Group {...group}
 											 on:remove-item={({detail}) => onChangeItemIrrelevant(true, group.key, detail.itemKey)}
 											 on:change={({detail}) => onChange(detail.checked, group.key, detail.itemKey)}
-								>
-									<div slot="right">
-										<Icon>times</Icon>
-									</div>
-								</Group>
+								/>
 							</div>
 						{/each}
 					</ExpansionPanelGroup>
@@ -124,11 +119,7 @@
 											 on:remove-item={({detail}) => onChangeItemIrrelevant(false, group.key, detail.itemKey)}
 											 on:change={({detail}) => onChange(detail.checked, group.key, detail.itemKey)}
 											 isRemovedItems
-								>
-									<div slot="right">
-										<Icon>plus</Icon>
-									</div>
-								</Group>
+								/>
 							</div>
 						{/each}
 					</ExpansionPanelGroup>

@@ -14,12 +14,9 @@
 		"format": "prettier --plugin-search-dir . --write ."
 	},
 	"dependencies": {
-		"@fortawesome/fontawesome-free": "^5.15.3",
 		"dexie": "^3.2.2",
 		"hammerjs": "^2.0.8",
-		"netlify-cms-quick-fields": "^0.3.0",
-		"workbox-recipes": "^6.5.4",
-		"workbox-strategies": "^6.5.4"
+		"netlify-cms-quick-fields": "^0.3.0"
 	},
 	"devDependencies": {
 		"@playwright/test": "^1.25.0",

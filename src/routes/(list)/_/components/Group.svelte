@@ -8,6 +8,7 @@
 	import Item from './Item.svelte';
 
 	export let label: string;
+	export let key: string;
 	export let items: (IListItem & ItemState)[];
 	export let isRemovedItems = false;
 
@@ -39,7 +40,12 @@
 			</div>
 		</div>
 		{#each items as item (item.key)}
-			<Item {...item} isRemovedItem={isRemovedItems} isEdit={$isEdit} on:remove={onRemove(item.key)} on:change={onChange(item.key)} />
+			<Item {...item}
+						groupKey={key}
+						isRemovedItem={isRemovedItems}
+						isEdit={$isEdit}
+						on:remove={onRemove(item.key)}
+						on:change={onChange(item.key)} />
 		{/each}
 	</ExpansionPanel>
 {/if}

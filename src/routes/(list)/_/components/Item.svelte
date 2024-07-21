@@ -7,6 +7,7 @@
 	const dispatcher = createEventDispatcher();
 
 	export let isEdit: boolean;
+	export let groupKey: string;
 	export let key: string;
 	export let label: string;
 	export let state: boolean;
@@ -20,6 +21,7 @@
 				<Checkbox class="checkbox flex-1"
 									checked={state}
 									disabled={isEdit}
+									inputId="checkbox-{groupKey}--{key}"
 									on:change
 				>
 					{label}
